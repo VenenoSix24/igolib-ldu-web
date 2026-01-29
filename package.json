@@ -2,6 +2,7 @@
   "name": "igolib-ldu-web",
   "private": true,
   "version": "1.0.29",
+  "homepage": "https://VenenoSix24.github.io/igolib-ldu-web",
   "type": "module",
   "scripts": {
     "dev": "vite",
