@@ -57,47 +57,40 @@ export const Hero: React.FC = () => {
 
           {/* Laptop Screen */}
           <div className="relative z-20 laptop-screen w-full max-w-[650px] aspect-[16/10] bg-white dark:bg-slate-800 rounded-2xl p-2 border-[6px] border-slate-200 dark:border-slate-700 shadow-2xl transition-colors duration-300">
-            <div className="w-full h-full bg-slate-50 dark:bg-slate-900 rounded-lg overflow-hidden relative border border-slate-100 dark:border-slate-800 flex flex-col transition-colors">
+            <div className="w-full h-full bg-slate-50 dark:bg-slate-900 rounded-lg overflow-hidden relative border border-slate-100 dark:border-slate-800 flex flex-col transition-colors group">
               
               {/* Fake Browser Bar */}
-              <div className="h-8 bg-slate-100 dark:bg-slate-800 flex items-center px-4 gap-2 border-b border-slate-200 dark:border-slate-700 shrink-0 transition-colors">
+              <div className="h-8 bg-slate-100 dark:bg-slate-800 flex items-center px-4 gap-2 border-b border-slate-200 dark:border-slate-700 shrink-0 transition-colors z-10">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                {/* Optional: Add URL bar visual */}
+                <div className="ml-4 flex-1 h-5 bg-white dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-700"></div>
               </div>
 
-              {/* Fake UI Content */}
-              <div className="p-4 md:p-6 grid grid-cols-12 gap-4 h-full overflow-hidden">
-                {/* Sidebar */}
-                <div className="col-span-3 space-y-3 hidden sm:block">
-                  <div className="h-6 bg-primary/20 rounded-md w-full animate-pulse"></div>
-                  <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded-md w-3/4 transition-colors"></div>
-                  <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded-md w-1/2 transition-colors"></div>
-                  <div className="mt-8 space-y-2">
-                    <div className="h-8 bg-white dark:bg-slate-800 rounded-lg w-full border border-slate-200 dark:border-slate-700 transition-colors"></div>
-                    <div className="h-8 bg-white dark:bg-slate-800 rounded-lg w-full border border-slate-200 dark:border-slate-700 transition-colors"></div>
-                    <div className="h-8 bg-white dark:bg-slate-800 rounded-lg w-full border border-slate-200 dark:border-slate-700 transition-colors"></div>
-                  </div>
-                </div>
-
-                {/* Main Content Area */}
-                <div className="col-span-12 sm:col-span-9 space-y-4">
-                  <div className="h-32 md:h-40 bg-gradient-to-br from-primary/5 to-lavender-accent/5 dark:from-primary/10 dark:to-lavender-accent/10 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center relative overflow-hidden group transition-colors">
-                     <Icon name="grid_view" className="text-6xl text-slate-200 dark:text-slate-700 group-hover:scale-110 transition-all duration-500" />
-                  </div>
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="h-16 md:h-20 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors"></div>
-                    <div className="h-16 md:h-20 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors"></div>
-                    <div className="h-16 md:h-20 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-colors"></div>
-                  </div>
-                  <div className="h-10 bg-primary rounded-xl w-full flex items-center justify-center font-bold text-white shadow-lg shadow-primary/20 mt-4 cursor-pointer hover:bg-blue-600">
-                    开始自动抢座
-                  </div>
-                </div>
+              {/* 
+                  SCREENSHOT IMAGES
+                  Replace the 'src' attributes below with your actual screenshot paths.
+                  Recommended size: 1280x800 or 2560x1600 (16:10 aspect ratio).
+              */}
+              <div className="relative w-full h-full bg-white dark:bg-slate-900">
+                  {/* Light Mode Screenshot - shown by default, hidden in dark mode */}
+                  <img 
+                    src="https://placehold.co/1280x800/f1f5f9/475569?text=Light+Mode+App+Screenshot" 
+                    alt="Application Interface Light" 
+                    className="w-full h-full object-cover object-top block dark:hidden transition-opacity"
+                  />
+                  
+                  {/* Dark Mode Screenshot - hidden by default, shown in dark mode */}
+                  <img 
+                    src="https://placehold.co/1280x800/0f172a/94a3b8?text=Dark+Mode+App+Screenshot" 
+                    alt="Application Interface Dark" 
+                    className="w-full h-full object-cover object-top hidden dark:block transition-opacity"
+                  />
               </div>
 
               {/* Screen Glare Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent pointer-events-none dark:opacity-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none dark:opacity-10 z-20"></div>
             </div>
           </div>
           
