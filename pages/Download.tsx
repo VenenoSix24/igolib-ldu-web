@@ -13,14 +13,18 @@ const DownloadCard: React.FC<{
     onClick={onClick}
     className={`relative group flex flex-col items-center justify-center p-6 rounded-2xl transition-all duration-300 border ${
       active
-        ? 'bg-white border-primary shadow-xl shadow-primary/10 scale-105 z-10'
-        : 'bg-white/50 border-slate-200 hover:bg-white hover:border-slate-300 hover:scale-102'
+        ? 'bg-white dark:bg-slate-800 border-primary shadow-xl shadow-primary/10 dark:shadow-primary/5 scale-105 z-10'
+        : 'bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 hover:scale-102'
     }`}
   >
-    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${active ? 'bg-primary/10 text-primary' : 'bg-slate-100 text-slate-400 group-hover:text-slate-600'}`}>
+    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${
+      active 
+        ? 'bg-primary/10 text-primary' 
+        : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300'
+    }`}>
       <Icon name={icon} size="3xl" />
     </div>
-    <span className={`font-bold ${active ? 'text-slate-900' : 'text-slate-500'}`}>{os}</span>
+    <span className={`font-bold transition-colors ${active ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>{os}</span>
     {active && (
       <span className="absolute -top-3 px-3 py-1 bg-primary text-white text-xs font-bold rounded-full shadow-lg">
         Selected
@@ -38,7 +42,7 @@ const CopyBlock: React.FC<{ command: string }> = ({ command }) => {
   };
 
   return (
-    <div className="bg-slate-900 rounded-lg p-4 font-mono text-sm text-slate-300 relative group my-2">
+    <div className="bg-slate-900 dark:bg-black rounded-lg p-4 font-mono text-sm text-slate-300 relative group my-2 border border-transparent dark:border-slate-800">
       <div className="overflow-x-auto pr-10 whitespace-pre-wrap break-all">
         <span className="text-green-400">$</span> {command}
       </div>
@@ -78,10 +82,10 @@ export const Download: React.FC = () => {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 transition-colors">
             下载 <span className="text-primary">我去抢个座</span>
           </h1>
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto transition-colors">
             全平台支持，毫秒级同步。选择您的操作系统，开始高效的预约体验。
           </p>
         </div>
@@ -104,20 +108,20 @@ export const Download: React.FC = () => {
         </div>
 
         {/* Main Download Area */}
-        <div className="glass-card rounded-3xl p-8 md:p-12 animate-fade-in relative overflow-hidden">
+        <div className="glass-card rounded-3xl p-8 md:p-12 animate-fade-in relative overflow-hidden transition-colors">
           {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16 transition-colors"></div>
 
           {/* Windows View */}
           {activeTab === 'Windows' && (
             <div className="grid md:grid-cols-2 gap-12">
               <div className="space-y-6">
                 <div>
-                  <div className="inline-flex items-center gap-2 text-green-600 bg-green-50 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                  <div className="inline-flex items-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors">
                     <Icon name="verified" size="sm" /> 官方推荐
                   </div>
-                  <h2 className="text-3xl font-black text-slate-900 mb-2">Windows 客户端</h2>
-                  <p className="text-slate-500">版本 v2.1.0 • 适用于 Windows 10/11</p>
+                  <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">Windows 客户端</h2>
+                  <p className="text-slate-500 dark:text-slate-400 transition-colors">版本 v2.1.0 • 适用于 Windows 10/11</p>
                 </div>
                 
                 {/* 64-bit Buttons */}
@@ -126,20 +130,20 @@ export const Download: React.FC = () => {
                     <Icon name="download" /> 下载 64位安装包 (.exe)
                   </button>
                   <div className="grid grid-cols-2 gap-3">
-                     <button className="bg-white border border-slate-200 text-slate-700 p-3 rounded-xl font-bold hover:bg-slate-50 transition-colors text-sm flex items-center justify-center gap-2">
+                     <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-sm flex items-center justify-center gap-2">
                        便携版 (Portable)
                      </button>
-                     <button className="bg-white border border-slate-200 text-slate-700 p-3 rounded-xl font-bold hover:bg-slate-50 transition-colors text-sm flex items-center justify-center gap-2">
+                     <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-sm flex items-center justify-center gap-2">
                        MSI 安装包
                      </button>
                   </div>
                 </div>
 
                 {/* 32-bit Toggle Section */}
-                <div className="pt-4 border-t border-slate-100">
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
                   <button 
                     onClick={() => setShow32Bit(!show32Bit)}
-                    className="group flex items-center gap-2 text-sm text-slate-500 font-bold hover:text-primary transition-colors"
+                    className="group flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 font-bold hover:text-primary dark:hover:text-primary transition-colors"
                   >
                     {show32Bit ? '收起 32位版本' : '显示 32位版本'} 
                     <Icon name={show32Bit ? "expand_less" : "expand_more"} size="sm" className="group-hover:translate-y-0.5 transition-transform" />
@@ -147,13 +151,13 @@ export const Download: React.FC = () => {
 
                   {show32Bit && (
                      <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 animate-fade-in">
-                       <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                       <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
                          32位 exe
                        </button>
-                       <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                       <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
                          32位 便携版
                        </button>
-                       <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                       <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
                          32位 MSI
                        </button>
                      </div>
@@ -162,31 +166,31 @@ export const Download: React.FC = () => {
               </div>
 
               {/* Windows Guide */}
-              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                 <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-4">
+              <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 transition-colors">
+                 <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-4 transition-colors">
                    <Icon name="info" className="text-primary" /> 安装指引
                  </h3>
-                 <div className="space-y-4 text-sm text-slate-600">
+                 <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                    <details className="group">
-                     <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary">
+                     <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary dark:hover:text-primary transition-colors">
                        <span>提示 "Windows 已保护您的电脑"？</span>
                        <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
                      </summary>
-                     <div className="pt-3 pb-1 pl-4 border-l-2 border-slate-200 ml-1 mt-2 space-y-2">
+                     <div className="pt-3 pb-1 pl-4 border-l-2 border-slate-200 dark:border-slate-700 ml-1 mt-2 space-y-2">
                        <p>这是因为应用暂未购买昂贵的 EV 证书。请按以下步骤操作：</p>
-                       <ol className="list-decimal list-inside space-y-1 text-slate-500">
-                         <li>点击弹窗中的 <span className="font-bold text-slate-800">"更多信息"</span></li>
-                         <li>点击下方的 <span className="font-bold text-slate-800">"仍要运行"</span> 按钮</li>
+                       <ol className="list-decimal list-inside space-y-1 text-slate-500 dark:text-slate-500">
+                         <li>点击弹窗中的 <span className="font-bold text-slate-800 dark:text-slate-300">"更多信息"</span></li>
+                         <li>点击下方的 <span className="font-bold text-slate-800 dark:text-slate-300">"仍要运行"</span> 按钮</li>
                        </ol>
                      </div>
                    </details>
                    
                    <details className="group">
-                     <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary">
+                     <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary dark:hover:text-primary transition-colors">
                        <span>Windows 7 用户必读</span>
                        <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
                      </summary>
-                     <div className="pt-3 pb-1 text-slate-500">
+                     <div className="pt-3 pb-1 text-slate-500 dark:text-slate-500">
                        由于 Tauri 2.0 依赖较新的 WebView2 运行时，Win7 用户可能需要手动安装 WebView2 Runtime 或升级系统。建议使用 Windows 10 及以上版本。
                      </div>
                    </details>
@@ -200,29 +204,29 @@ export const Download: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-12">
                <div className="space-y-6">
                 <div>
-                   <div className="inline-flex items-center gap-2 text-slate-600 bg-slate-100 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                   <div className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors">
                     <Icon name="apple" size="sm" /> macOS
                   </div>
-                  <h2 className="text-3xl font-black text-slate-900 mb-2">macOS 客户端</h2>
-                  <p className="text-slate-500">支持 macOS 11.0 (Big Sur) 及以上版本</p>
+                  <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">macOS 客户端</h2>
+                  <p className="text-slate-500 dark:text-slate-400 transition-colors">支持 macOS 11.0 (Big Sur) 及以上版本</p>
                 </div>
                 
                 <div className="flex flex-col gap-3">
-                  <button className="bg-slate-900 text-white p-4 rounded-xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+                  <button className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-4 rounded-xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 dark:hover:bg-slate-200 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
                     <Icon name="download" /> Apple Silicon (M1/M2/M3)
                   </button>
-                  <button className="bg-white border border-slate-200 text-slate-700 p-4 rounded-xl font-bold hover:bg-slate-50 transition-colors flex items-center justify-center gap-3">
+                  <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-3">
                     <Icon name="download" /> Intel 芯片版本
                   </button>
                 </div>
               </div>
 
                {/* macOS Guide */}
-              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                 <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-4">
-                   <Icon name="terminal" className="text-slate-700" /> 终端修复指引
+              <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 transition-colors">
+                 <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-4 transition-colors">
+                   <Icon name="terminal" className="text-slate-700 dark:text-slate-400" /> 终端修复指引
                  </h3>
-                 <div className="space-y-4 text-sm text-slate-600">
+                 <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
                    <p>如果打开应用时提示 <span className="font-bold text-red-500">"已损坏"</span> 或 <span className="font-bold text-red-500">"无法验证开发者"</span>，请在终端中执行以下命令来移除隔离属性：</p>
                    
                    <div>
@@ -242,21 +246,21 @@ export const Download: React.FC = () => {
            {/* Linux View */}
            {activeTab === 'Linux' && (
             <div className="text-center py-10">
-              <div className="inline-flex p-4 bg-slate-100 rounded-full mb-6 text-slate-700">
+              <div className="inline-flex p-4 bg-slate-100 dark:bg-slate-700 rounded-full mb-6 text-slate-700 dark:text-slate-200 transition-colors">
                 <Icon name="terminal" size="4xl" />
               </div>
-              <h2 className="text-3xl font-black text-slate-900 mb-4">Linux 客户端</h2>
-              <p className="text-slate-500 max-w-lg mx-auto mb-8">
+              <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 transition-colors">Linux 客户端</h2>
+              <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto mb-8 transition-colors">
                 既然你使用 Linux，相信你已经知道如何安装了。我们提供了主流的打包格式。
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                 <button className="bg-slate-800 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-700 transition-colors flex items-center gap-2">
+                 <button className="bg-slate-800 dark:bg-slate-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-700 dark:hover:bg-slate-600 transition-colors flex items-center gap-2">
                    .deb (Debian/Ubuntu)
                  </button>
-                 <button className="bg-white border border-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors flex items-center gap-2">
+                 <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
                    .rpm (Fedora/RHEL)
                  </button>
-                 <button className="bg-white border border-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors flex items-center gap-2">
+                 <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
                    .AppImage (Universal)
                  </button>
               </div>
@@ -267,8 +271,8 @@ export const Download: React.FC = () => {
           {activeTab === 'Android' && (
             <div className="max-w-xl mx-auto space-y-8 animate-fade-in text-center">
                 <div>
-                  <h2 className="text-3xl font-black text-slate-900 mb-2">Android 客户端</h2>
-                  <p className="text-slate-500">随时随地，极速抢座。支持 Android 8.0+</p>
+                  <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">Android 客户端</h2>
+                  <p className="text-slate-500 dark:text-slate-400 transition-colors">随时随地，极速抢座。支持 Android 8.0+</p>
                 </div>
                 
                 <div className="flex flex-col gap-3">
@@ -276,10 +280,10 @@ export const Download: React.FC = () => {
                       <Icon name="download" /> 下载 arm64-v8a APK
                       <span className="bg-white/20 text-xs px-2 py-0.5 rounded ml-2">推荐</span>
                   </button>
-                  <button className="w-full bg-white border border-slate-200 text-slate-600 p-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
+                  <button className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
                      <Icon name="download" size="sm" /> 下载 arm-v7a (旧设备)
                   </button>
-                   <button className="w-full bg-white border border-slate-200 text-slate-600 p-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
+                   <button className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
                      <Icon name="download" size="sm" /> 下载 x86_64 (模拟器)
                   </button>
                 </div>

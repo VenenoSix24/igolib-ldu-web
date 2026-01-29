@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { Download } from './pages/Download';
 import { Changelog } from './pages/Changelog';
+
+// Component to handle scroll restoration
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState(false);
@@ -33,6 +44,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="relative min-h-screen font-sans selection:bg-primary selection:text-white flex flex-col transition-colors duration-300">
         
         {/* Dynamic Background Mesh */}

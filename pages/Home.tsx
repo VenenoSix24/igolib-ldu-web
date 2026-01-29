@@ -57,26 +57,26 @@ export const Home: React.FC = () => {
                 </p>
 
                 {/* Platform Icons Visual */}
-                <div className="flex justify-center gap-8 md:gap-16 mb-12 opacity-80">
-                  <div className="flex flex-col items-center gap-3 group">
+                <div className="flex flex-wrap justify-center gap-6 md:gap-16 mb-12 opacity-80">
+                  <div className="flex flex-col items-center gap-3 group w-20 md:w-auto">
                     <div className="w-16 h-16 bg-blue-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm group-hover:scale-110 transition-transform duration-300">
                       <Icon name="window" size="3xl" />
                     </div>
                     <span className="text-xs font-bold text-slate-400 uppercase">Windows</span>
                   </div>
-                  <div className="flex flex-col items-center gap-3 group">
-                    <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-700 dark:text-slate-300 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                      <Icon name="apple" size="3xl" />
+                  <div className="flex flex-col items-center gap-3 group w-20 md:w-auto">
+                    <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white shadow-sm group-hover:scale-110 transition-transform duration-300">
+                      <Icon name="apple" size="3xl" /> {/* Black Apple in light, White Apple in dark */}
                     </div>
                     <span className="text-xs font-bold text-slate-400 uppercase">macOS</span>
                   </div>
-                  <div className="flex flex-col items-center gap-3 group">
+                  <div className="flex flex-col items-center gap-3 group w-20 md:w-auto">
                     <div className="w-16 h-16 bg-green-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-green-600 dark:text-green-400 shadow-sm group-hover:scale-110 transition-transform duration-300">
                       <Icon name="android" size="3xl" />
                     </div>
                     <span className="text-xs font-bold text-slate-400 uppercase">Android</span>
                   </div>
-                   <div className="flex flex-col items-center gap-3 group">
+                   <div className="flex flex-col items-center gap-3 group w-20 md:w-auto">
                     <div className="w-16 h-16 bg-orange-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-orange-600 dark:text-orange-400 shadow-sm group-hover:scale-110 transition-transform duration-300">
                       <Icon name="terminal" size="3xl" />
                     </div>

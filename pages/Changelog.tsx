@@ -55,20 +55,20 @@ export const Changelog: React.FC = () => {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 px-4 py-1.5 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 px-4 py-1.5 rounded-full mb-6 transition-colors">
             <Icon name="history" size="sm" />
             <span className="text-xs font-bold uppercase tracking-wider">Commit History</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 transition-colors">
             更新日志
           </h1>
-          <p className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto transition-colors">
             每一次提交，都是为了更好的体验。
           </p>
         </div>
 
         {/* Content */}
-        <div className="glass-card rounded-3xl p-8 md:p-12 relative">
+        <div className="glass-card rounded-3xl p-8 md:p-12 relative transition-colors">
           {loading && (
              <div className="flex flex-col items-center justify-center py-20 text-slate-400">
                 <Icon name="sync" size="3xl" className="animate-spin mb-4" />
@@ -84,21 +84,21 @@ export const Changelog: React.FC = () => {
           )}
 
           {!loading && !error && (
-            <div className="space-y-8 relative before:absolute before:left-[19px] md:before:left-[140px] before:top-4 before:bottom-4 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
+            <div className="space-y-8 relative before:absolute before:left-[27px] md:before:left-[140px] before:top-4 before:bottom-4 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
               {commits.map((item) => (
                 <div key={item.sha} className="relative flex flex-col md:flex-row gap-4 md:gap-12 group">
                   {/* Date Column */}
-                  <div className="pl-12 md:pl-0 md:w-[140px] md:text-right shrink-0">
+                  <div className="pl-14 md:pl-0 md:w-[140px] md:text-right shrink-0">
                     <div className="text-sm font-bold text-slate-500 dark:text-slate-400">
                        {formatDate(item.commit.author.date)}
                     </div>
                   </div>
 
                   {/* Dot on Timeline */}
-                  <div className="absolute left-[13px] md:left-[134px] top-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-800 border-2 border-primary rounded-full z-10 group-hover:scale-125 transition-transform"></div>
+                  <div className="absolute left-[21px] md:left-[134px] top-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-800 border-2 border-primary rounded-full z-10 group-hover:scale-125 transition-transform"></div>
 
                   {/* Content Column */}
-                  <div className="flex-1 pb-4 md:pb-0 pl-12 md:pl-0">
+                  <div className="flex-1 pb-4 md:pb-0 pl-14 md:pl-0">
                     <a 
                       href={item.html_url} 
                       target="_blank" 
