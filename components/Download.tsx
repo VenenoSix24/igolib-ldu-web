@@ -5,6 +5,7 @@ type OS = 'Android' | 'Windows' | 'macOS' | 'Linux';
 
 export const Download: React.FC = () => {
   const [activeTab, setActiveTab] = useState<OS>('Windows');
+  const [show32Bit, setShow32Bit] = useState(false);
 
   // Simple heuristic for OS detection
   useEffect(() => {
@@ -63,25 +64,31 @@ export const Download: React.FC = () => {
             
             {/* Android Content */}
             {activeTab === 'Android' && (
-              <div className="animate-fade-in space-y-8">
-                <div className="flex items-start gap-6">
-                  <div className="bg-green-100 p-4 rounded-2xl text-green-600 shrink-0">
-                    <Icon name="android" size="4xl" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Android 客户端</h3>
-                    <p className="text-slate-500 mb-4">适用于 Android 8.0 及以上版本</p>
-                    <div className="flex flex-wrap gap-3">
-                      <button className="bg-primary text-white px-6 py-2 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-blue-600 transition-colors flex items-center gap-2">
-                        <Icon name="download" size="sm" /> arm64 (推荐)
-                      </button>
-                      <button className="bg-white border border-slate-200 text-slate-700 px-6 py-2 rounded-lg font-bold hover:bg-slate-50 transition-colors">
-                        arm
-                      </button>
-                      <button className="bg-white border border-slate-200 text-slate-700 px-6 py-2 rounded-lg font-bold hover:bg-slate-50 transition-colors">
-                        x86_64
-                      </button>
-                    </div>
+              <div className="animate-fade-in max-w-2xl mx-auto">
+                <div className="flex items-center justify-center mb-8">
+                   <div className="bg-green-100 p-6 rounded-3xl text-green-600">
+                     <Icon name="android" size="5xl" />
+                   </div>
+                </div>
+                
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Android 客户端</h3>
+                  <p className="text-slate-500">随时随地，极速抢座。支持 Android 8.0+</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <button className="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg shadow-green-600/20 hover:bg-green-500 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+                      <Icon name="download" /> 下载 arm64-v8a APK
+                      <span className="bg-white/20 text-xs px-2 py-0.5 rounded ml-2">推荐</span>
+                  </button>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <button className="w-full bg-white border border-slate-200 text-slate-700 p-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-2 text-sm">
+                       <Icon name="download" size="sm" /> arm-v7a
+                    </button>
+                    <button className="w-full bg-white border border-slate-200 text-slate-700 p-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-2 text-sm">
+                       <Icon name="download" size="sm" /> x86_64
+                    </button>
                   </div>
                 </div>
               </div>
@@ -91,51 +98,95 @@ export const Download: React.FC = () => {
             {activeTab === 'Windows' && (
               <div className="animate-fade-in space-y-8">
                 <div className="flex flex-col md:flex-row gap-8">
-                   <div className="bg-blue-50 p-6 rounded-2xl text-primary shrink-0 h-fit">
+                   <div className="bg-blue-50 p-6 rounded-2xl text-primary shrink-0 h-fit hidden md:block">
                     <Icon name="window" size="5xl" />
                   </div>
                   <div className="flex-1 space-y-8">
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-4">Windows 64 位</h3>
-                      <div className="flex flex-wrap gap-3">
-                        <button className="bg-primary text-white px-6 py-2 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-blue-600 transition-colors flex items-center gap-2">
-                           <Icon name="download" size="sm" /> exe (推荐)
-                        </button>
-                         <button className="bg-white border border-slate-200 text-slate-700 px-6 py-2 rounded-lg font-bold hover:bg-slate-50 transition-colors">
-                          便携版 (次推荐)
-                        </button>
-                        <button className="bg-white border border-slate-200 text-slate-700 px-6 py-2 rounded-lg font-bold hover:bg-slate-50 transition-colors">
-                          msi
-                        </button>
+                      <div className="inline-flex items-center gap-2 text-green-600 bg-green-50 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                        <Icon name="verified" size="sm" /> 官方推荐
+                      </div>
+                      <h2 className="text-3xl font-black text-slate-900 mb-2">Windows 客户端</h2>
+                      <p className="text-slate-500">版本 v2.1.0 • 适用于 Windows 10/11</p>
+                    </div>
+                    
+                    {/* 64-bit Buttons */}
+                    <div className="flex flex-col gap-3">
+                      <button className="bg-primary text-white p-4 rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-blue-600 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+                        <Icon name="download" /> 下载 64位安装包 (.exe)
+                      </button>
+                      <div className="grid grid-cols-2 gap-3">
+                         <button className="bg-white border border-slate-200 text-slate-700 p-3 rounded-xl font-bold hover:bg-slate-50 transition-colors text-sm flex items-center justify-center gap-2">
+                           便携版 (Portable)
+                         </button>
+                         <button className="bg-white border border-slate-200 text-slate-700 p-3 rounded-xl font-bold hover:bg-slate-50 transition-colors text-sm flex items-center justify-center gap-2">
+                           MSI 安装包
+                         </button>
                       </div>
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-800 mb-4">Windows 32 位</h3>
-                      <div className="flex flex-wrap gap-3">
-                        <button className="bg-white border border-slate-200 text-slate-700 px-5 py-2 rounded-lg font-bold hover:bg-slate-50 transition-colors">
-                          exe (推荐)
-                        </button>
-                         <button className="bg-white border border-slate-200 text-slate-700 px-5 py-2 rounded-lg font-bold hover:bg-slate-50 transition-colors">
-                          便携版
-                        </button>
-                        <button className="bg-white border border-slate-200 text-slate-700 px-5 py-2 rounded-lg font-bold hover:bg-slate-50 transition-colors">
-                          msi
-                        </button>
+                    <div className="pt-4 border-t border-slate-100">
+                      <div className="flex items-center justify-between">
+                         <p className="text-xs text-slate-400 font-bold uppercase">更多选项</p>
+                         <button 
+                            onClick={() => setShow32Bit(!show32Bit)}
+                            className="text-sm text-slate-500 hover:text-primary flex items-center gap-1 font-bold"
+                         >
+                            {show32Bit ? '收起 32位版本' : '显示 32位版本'} <Icon name={show32Bit ? "expand_less" : "expand_more"} size="sm" />
+                         </button>
                       </div>
-                    </div>
 
-                    <div className="bg-amber-50 border border-amber-100 rounded-xl p-5 flex gap-4">
-                      <div className="text-amber-500 shrink-0">
-                        <Icon name="warning" size="lg" />
-                      </div>
-                      <div className="text-sm text-slate-600 space-y-2">
-                        <p className="font-bold text-amber-700">Important</p>
-                        <p>由于构建未封装 Webview ，可能不能在 Windows 7 上运行。</p>
-                        <p>安装时如果弹出 「Windows 已保护您的电脑」，请点击 <span className="font-bold">“更多信息” -> “仍要运行”</span>。</p>
-                      </div>
+                      {/* 32-bit Collapsible Section */}
+                      {show32Bit && (
+                        <div className="mt-4 p-4 bg-slate-50 rounded-xl animate-fade-in border border-slate-100">
+                           <h4 className="text-sm font-bold text-slate-700 mb-3">Windows 32 位</h4>
+                           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                             <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                               exe 安装包
+                             </button>
+                             <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                               便携版
+                             </button>
+                             <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                               MSI 安装包
+                             </button>
+                           </div>
+                        </div>
+                      )}
                     </div>
                   </div>
+                </div>
+
+                {/* Windows Guide */}
+                <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                   <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-4">
+                     <Icon name="info" className="text-primary" /> 安装指引
+                   </h3>
+                   <div className="space-y-4 text-sm text-slate-600">
+                     <details className="group">
+                       <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary">
+                         <span>提示 "Windows 已保护您的电脑"？</span>
+                         <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
+                       </summary>
+                       <div className="pt-3 pb-1 pl-4 border-l-2 border-slate-200 ml-1 mt-2 space-y-2">
+                         <p>这是因为应用暂未购买昂贵的 EV 证书。请按以下步骤操作：</p>
+                         <ol className="list-decimal list-inside space-y-1 text-slate-500">
+                           <li>点击弹窗中的 <span className="font-bold text-slate-800">"更多信息"</span></li>
+                           <li>点击下方的 <span className="font-bold text-slate-800">"仍要运行"</span> 按钮</li>
+                         </ol>
+                       </div>
+                     </details>
+                     
+                     <details className="group">
+                       <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary">
+                         <span>Windows 7 用户必读</span>
+                         <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
+                       </summary>
+                       <div className="pt-3 pb-1 text-slate-500">
+                         由于 Tauri 2.0 依赖较新的 WebView2 运行时，Win7 用户可能需要手动安装 WebView2 Runtime 或升级系统。建议使用 Windows 10 及以上版本。
+                       </div>
+                     </details>
+                   </div>
                 </div>
               </div>
             )}
@@ -144,10 +195,15 @@ export const Download: React.FC = () => {
             {activeTab === 'macOS' && (
               <div className="animate-fade-in space-y-8">
                 <div className="flex flex-col md:flex-row gap-8">
-                  <div className="bg-slate-100 p-6 rounded-2xl text-slate-800 shrink-0 h-fit">
+                  <div className="bg-slate-100 p-6 rounded-2xl text-slate-800 shrink-0 h-fit hidden md:block">
                     <Icon name="laptop_mac" size="5xl" />
                   </div>
                   <div className="flex-1 space-y-8">
+                    <div>
+                      <h2 className="text-3xl font-black text-slate-900 mb-2">macOS 客户端</h2>
+                      <p className="text-slate-500">支持 macOS 11.0 (Big Sur) 及以上版本</p>
+                    </div>
+
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="p-4 border border-slate-200 rounded-xl hover:border-primary/50 transition-colors bg-white">
                         <h4 className="font-bold text-slate-900 mb-2">Apple Silicon (M系列)</h4>
@@ -188,13 +244,16 @@ export const Download: React.FC = () => {
             {/* Linux Content */}
             {activeTab === 'Linux' && (
               <div className="animate-fade-in space-y-8">
-                 <div className="flex items-start gap-6">
-                  <div className="bg-slate-800 p-4 rounded-2xl text-white shrink-0">
-                    <Icon name="terminal" size="4xl" />
+                 <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                  <div className="bg-slate-800 p-6 rounded-2xl text-white shrink-0">
+                    <Icon name="terminal" size="5xl" />
                   </div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="text-2xl font-bold text-slate-900 mb-4">Linux 客户端</h3>
-                    <div className="flex flex-wrap gap-3">
+                    <p className="text-slate-500 mb-6 max-w-lg">
+                      我们提供了主流发行版的打包格式。请根据您的系统选择合适的安装包。
+                    </p>
+                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
                       <button className="bg-primary text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-blue-600 transition-colors flex items-center gap-2">
                         <Icon name="widgets" size="sm" /> DEB包
                       </button>
