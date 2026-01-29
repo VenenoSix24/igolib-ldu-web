@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from './Icon';
+import { Link } from 'react-router-dom';
 
 export const Hero: React.FC = () => {
   return (
@@ -28,12 +29,12 @@ export const Hero: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 pt-4 justify-center lg:justify-start">
-            <button className="bg-primary text-white px-10 py-5 rounded-thick font-bold text-lg shadow-2xl shadow-primary/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group">
+            <Link to="/download" className="bg-primary text-white px-8 py-3.5 rounded-thick font-bold text-lg shadow-2xl shadow-primary/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group">
               立即下载 <Icon name="download" className="group-hover:animate-bounce" />
-            </button>
-            <button className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-2 border-slate-200 dark:border-slate-700 px-10 py-5 rounded-thick font-bold text-lg hover:bg-white dark:hover:bg-slate-700 hover:border-primary text-slate-700 dark:text-slate-200 hover:text-primary transition-all flex items-center justify-center gap-2">
+            </Link>
+            <a href="https://github.com/VenenoSix24/igolib-ldu" target="_blank" rel="noreferrer" className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-2 border-slate-200 dark:border-slate-700 px-8 py-3.5 rounded-thick font-bold text-lg hover:bg-white dark:hover:bg-slate-700 hover:border-primary text-slate-700 dark:text-slate-200 hover:text-primary transition-all flex items-center justify-center gap-2">
               GitHub <Icon name="code" />
-            </button>
+            </a>
           </div>
         </div>
 

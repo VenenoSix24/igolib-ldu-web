@@ -71,6 +71,7 @@ export const Navbar: React.FC = () => {
             <button onClick={() => scrollToSection('process')} className={linkClass}>使用流程</button>
             <button onClick={() => scrollToSection('faq')} className={linkClass}>常见问题</button>
             <Link to="/changelog" className={linkClass}>更新日志</Link>
+            <Link to="/download" className={linkClass}>下载体验</Link>
           </div>
 
           {/* Right: Actions */}
@@ -83,7 +84,7 @@ export const Navbar: React.FC = () => {
               <Icon name={isMenuOpen ? "close" : "menu"} size="md" />
             </button>
 
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hidden sm:flex bg-slate-900 dark:bg-slate-800 text-white px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm hover:scale-105 transition-transform items-center gap-1 cursor-pointer">
+            <a href="https://github.com/VenenoSix24/igolib-ldu" target="_blank" rel="noreferrer" className="hidden sm:flex bg-slate-900 dark:bg-slate-800 text-white px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm hover:scale-105 transition-transform items-center gap-1 cursor-pointer">
               <Icon name="code" size="sm" /> <span className="hidden lg:inline">GitHub</span>
             </a>
             <Link to="/download" className="bg-primary text-white px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm shadow-xl shadow-primary/30 hover:bg-blue-600 transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap">
@@ -103,7 +104,7 @@ export const Navbar: React.FC = () => {
           <button onClick={() => scrollToSection('faq')} className={mobileLinkClass}>常见问题</button>
           <Link to="/changelog" className={mobileLinkClass}>更新日志</Link>
           <Link to="/download" className={mobileLinkClass}>下载客户端</Link>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className={mobileLinkClass}>
+          <a href="https://github.com/VenenoSix24/igolib-ldu" target="_blank" rel="noreferrer" className={mobileLinkClass}>
              GitHub 仓库
           </a>
         </div>

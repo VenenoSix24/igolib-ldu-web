@@ -3,12 +3,20 @@ import { Icon } from '../components/Icon';
 
 type OS = 'Windows' | 'macOS' | 'Linux' | 'Android' | 'Unknown';
 
+// Apple Logo SVG Component
+const AppleLogo = () => (
+  <svg viewBox="0 0 384 512" fill="currentColor" className="w-full h-full p-1">
+    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z"/>
+  </svg>
+);
+
 const DownloadCard: React.FC<{
   active: boolean;
   os: string;
   icon: string;
+  isCustomIcon?: boolean;
   onClick: () => void;
-}> = ({ active, os, icon, onClick }) => (
+}> = ({ active, os, icon, isCustomIcon, onClick }) => (
   <button
     onClick={onClick}
     className={`relative group flex flex-col items-center justify-center p-6 rounded-2xl transition-all duration-300 border ${
@@ -22,7 +30,11 @@ const DownloadCard: React.FC<{
         ? 'bg-primary/10 text-primary' 
         : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300'
     }`}>
-      <Icon name={icon} size="3xl" />
+      {isCustomIcon ? (
+         <div className="w-8 h-8"><AppleLogo /></div>
+      ) : (
+         <Icon name={icon} size="3xl" />
+      )}
     </div>
     <span className={`font-bold transition-colors ${active ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>{os}</span>
     {active && (
@@ -99,9 +111,9 @@ export const Download: React.FC = () => {
               active={activeTab === os}
               icon={
                 os === 'Windows' ? 'window' :
-                os === 'macOS' ? 'laptop_mac' :
                 os === 'Android' ? 'android' : 'terminal'
               }
+              isCustomIcon={os === 'macOS'}
               onClick={() => setActiveTab(os)}
             />
           ))}
@@ -205,7 +217,7 @@ export const Download: React.FC = () => {
                <div className="space-y-6">
                 <div>
                    <div className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors">
-                    <Icon name="apple" size="sm" /> macOS
+                    <div className="w-4 h-4"><AppleLogo /></div> macOS
                   </div>
                   <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">macOS 客户端</h2>
                   <p className="text-slate-500 dark:text-slate-400 transition-colors">支持 macOS 11.0 (Big Sur) 及以上版本</p>

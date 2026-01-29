@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from './Icon';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
@@ -27,7 +28,8 @@ export const Footer: React.FC = () => {
               <li><a href="#features" className="hover:text-primary transition-colors flex items-center gap-2">功能特性</a></li>
               <li><a href="#process" className="hover:text-primary transition-colors flex items-center gap-2">使用流程</a></li>
               <li><a href="#faq" className="hover:text-primary transition-colors flex items-center gap-2">常见问题</a></li>
-              <li><a href="/changelog" className="hover:text-primary transition-colors flex items-center gap-2">更新日志</a></li>
+              <li><Link to="/changelog" className="hover:text-primary transition-colors flex items-center gap-2">更新日志</Link></li>
+              <li><Link to="/download" className="hover:text-primary transition-colors flex items-center gap-2">下载客户端</Link></li>
             </ul>
           </div>
           

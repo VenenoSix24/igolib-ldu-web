@@ -84,18 +84,19 @@ export const Changelog: React.FC = () => {
           )}
 
           {!loading && !error && (
-            <div className="space-y-8 relative before:absolute before:left-[27px] md:before:left-[140px] before:top-4 before:bottom-4 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
+            // Adjusted Timeline Line Position: before:md:left-[210px] to give space for 192px width date column
+            <div className="space-y-8 relative before:absolute before:left-[27px] md:before:left-[210px] before:top-4 before:bottom-4 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
               {commits.map((item) => (
                 <div key={item.sha} className="relative flex flex-col md:flex-row gap-4 md:gap-12 group">
-                  {/* Date Column */}
-                  <div className="pl-14 md:pl-0 md:w-[140px] md:text-right shrink-0">
+                  {/* Date Column: Increased width to md:w-48 (192px) to fix overlapping */}
+                  <div className="pl-14 md:pl-0 md:w-48 md:text-right shrink-0">
                     <div className="text-sm font-bold text-slate-500 dark:text-slate-400">
                        {formatDate(item.commit.author.date)}
                     </div>
                   </div>
 
-                  {/* Dot on Timeline */}
-                  <div className="absolute left-[21px] md:left-[134px] top-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-800 border-2 border-primary rounded-full z-10 group-hover:scale-125 transition-transform"></div>
+                  {/* Dot on Timeline: Adjusted position to md:left-[204px] to align with line */}
+                  <div className="absolute left-[21px] md:left-[204px] top-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-800 border-2 border-primary rounded-full z-10 group-hover:scale-125 transition-transform"></div>
 
                   {/* Content Column */}
                   <div className="flex-1 pb-4 md:pb-0 pl-14 md:pl-0">
