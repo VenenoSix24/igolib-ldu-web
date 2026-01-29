@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -23,7 +23,7 @@ const App: React.FC = () => {
   // Initialize theme from system preference and listen for changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const updateTheme = (e: MediaQueryListEvent | MediaQueryList) => {
       if (e.matches) {
         setIsDark(true);
@@ -43,10 +43,10 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop />
       <div className="relative min-h-screen font-sans selection:bg-primary selection:text-white flex flex-col transition-colors duration-300">
-        
+
         {/* Dynamic Background Mesh */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
           <div className={`absolute top-0 -left-4 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob transition-colors duration-500 ${isDark ? 'bg-purple-900 mix-blend-normal opacity-20' : 'bg-purple-300'}`}></div>
@@ -56,7 +56,7 @@ const App: React.FC = () => {
         </div>
 
         <Navbar />
-        
+
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -64,10 +64,10 @@ const App: React.FC = () => {
             <Route path="/changelog" element={<Changelog />} />
           </Routes>
         </main>
-        
+
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
