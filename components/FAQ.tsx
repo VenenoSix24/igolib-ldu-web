@@ -10,7 +10,7 @@ interface FAQItemProps {
 
 const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) => (
   <div className="border-b border-slate-200 dark:border-slate-700 last:border-0">
-    <button 
+    <button
       onClick={onClick}
       className="w-full py-6 flex items-center justify-between text-left group"
     >
@@ -21,7 +21,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) 
         <Icon name="expand_more" />
       </span>
     </button>
-    <div 
+    <div
       className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 mb-6' : 'max-h-0 opacity-0'}`}
     >
       <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
@@ -37,23 +37,23 @@ export const FAQ: React.FC = () => {
   const faqs = [
     {
       question: "使用这个软件会导致账号被封禁吗？",
-      answer: "我们的核心逻辑是模拟真实用户的网页操作（Http Request），并且不包含任何暴力破解或攻击性行为。虽然我们尽力模拟正常请求频率，但任何自动化工具都存在理论风险，建议合理设置刷新间隔（推荐 3000ms 以上）。"
+      answer: "我们的核心逻辑是模拟真实用户的操作（Http Request），并且不包含任何暴力破解或攻击性行为。在我们高强度测试下，未发现任何异常。但任何自动化工具都存在理论风险（反正我还没遇到过 ）。"
     },
     {
       question: "为什么 Windows 提示“已保护您的电脑”？",
-      answer: "这是因为我们是开源免费项目，没有购买昂贵的 EV 代码签名证书（每年需数千元）。请点击弹窗中的「更多信息」然后选择「仍要运行」即可。代码完全开源，安全可查。"
+      answer: "这是因为我们是开源免费项目，没有购买 EV 代码签名证书。请点击弹窗中的「更多信息」然后选择「仍要运行」即可。代码完全开源，安全可查。"
     },
     {
       question: "支持哪些学校的图书馆系统？",
-      answer: "目前完美支持使用“利昂系统” (Lyd) 的大多数高校图书馆。如果您的学校系统 API 结构与标准版一致，只需在设置中更改 API 域名即可直接使用。我们也正在适配更多系统。"
+      answer: "目前完美支持使用“某个X去图书馆”的大多数高校图书馆。如果您的学校系统 API 结构与标准版一致，只需在设置中更改 API 域名即可直接使用。我们也正在适配更多系统。"
     },
     {
       question: "如何获取我的 Cookie？",
-      answer: "最简单的方法是：在电脑浏览器登录学校图书馆网页 -> 按 F12 打开开发者工具 -> 刷新页面 -> 在 Network 选项卡找到第一个请求 -> 复制 Request Headers 中的 Cookie 字段值粘贴到软件中。"
+      answer: "使用 Charles、Reqable 等网络抓包工具，开启后，正常访问一次图书馆系统，然后找到登录 Cookie （大概像：Authorization=eyJ0xxxxxx），后面我会写一篇教程。"
     },
     {
       question: "软件是收费的吗？",
-      answer: "完全免费且开源。本项目旨在技术交流与方便同学，严禁用于任何商业用途或倒卖。如果您觉得好用，可以在 GitHub 给我们要给 Star。"
+      answer: "完全免费且开源。本项目旨在技术交流与方便同学，严禁用于任何商业用途或倒卖。如果您觉得好用，可以在 GitHub 点个 Star，球球啦。"
     }
   ];
 
@@ -67,18 +67,18 @@ export const FAQ: React.FC = () => {
 
         <div className="glass-card rounded-3xl px-8 md:px-12 py-4">
           {faqs.map((faq, index) => (
-            <FAQItem 
-              key={index} 
-              {...faq} 
+            <FAQItem
+              key={index}
+              {...faq}
               isOpen={openIndex === index}
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
             />
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
           <p className="text-slate-500 dark:text-slate-400">
-            还有其他问题？欢迎加入我们的 <a href="#" className="text-primary font-bold hover:underline">Telegram 交流群</a> 或提交 <a href="#" className="text-primary font-bold hover:underline">GitHub Issue</a>
+            还有其他问题？<br></br>欢迎加入我们的 <a href="https://t.me/igolib_ldu" className="text-primary font-bold hover:underline">Telegram 交流群</a> 或提交 <a href="https://github.com/VenenoSix24/igolib-ldu/issues" className="text-primary font-bold hover:underline">GitHub Issue</a>
           </p>
         </div>
       </div>

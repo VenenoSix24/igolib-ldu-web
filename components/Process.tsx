@@ -13,7 +13,7 @@ export const Process: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 transition-colors">使用流程</h2>
-          <p className="text-slate-500 dark:text-slate-400 font-medium text-lg transition-colors">四步开启高效学习之旅，简单直观</p>
+          <p className="text-slate-500 dark:text-slate-400 font-medium text-lg transition-colors">四步开启图书馆学习之旅，简单直观</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -26,7 +26,7 @@ export const Process: React.FC = () => {
                 <Icon name="school" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">配置学校</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-sm">输入并设置全局 API 接口路径，适配所在校区环境。</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">输入并设置全局 API 接口路径，适配所在学校环境。</p>
             </div>
             <Arrow />
           </div>

@@ -1,0 +1,63 @@
+{
+  "version": "1.0.25",
+  "notes": "🎉我去抢个座全平台应用正式发布！\n新版本添加了内置更新组件\n为 Android 平台添加启动画面支持",
+  "pub_date": "2026-01-29T04:39:34.573Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWXdZYzRSbi9XZjd4YzBKT20yb0lDQ2xPU0JObWkrZHhQM2lqNlhwVUwvQVZ4bERiUlgweG5MSE5FTW1RTXFYSXRlVGpBcVFIZFAyZEpGTGhwbGNtc2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMDUxCWZpbGU65oiR5Y675oqi5Liq5bqnLmFwcC50YXIuZ3oKaVk3MFRaMCt5WWxOMHVESkY2endqTUhWNWI1b2ROWjBJaXhHYzkzWE10MGo5Y0F2ZjR4NWtaUHpLTGVNaFF3UktZWTZ5OTc4N3lEcEtlWUoxeTBiQ0E9PQo=",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-darwin-aarch64.app.tar.gz"
+    },
+    "darwin-aarch64-app": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWXdZYzRSbi9XZjd4YzBKT20yb0lDQ2xPU0JObWkrZHhQM2lqNlhwVUwvQVZ4bERiUlgweG5MSE5FTW1RTXFYSXRlVGpBcVFIZFAyZEpGTGhwbGNtc2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMDUxCWZpbGU65oiR5Y675oqi5Liq5bqnLmFwcC50YXIuZ3oKaVk3MFRaMCt5WWxOMHVESkY2endqTUhWNWI1b2ROWjBJaXhHYzkzWE10MGo5Y0F2ZjR4NWtaUHpLTGVNaFF3UktZWTZ5OTc4N3lEcEtlWUoxeTBiQ0E9PQo=",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-darwin-aarch64.app.tar.gz"
+    },
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWStsdXpEbkc2ZWZIbk5GTTMxNlpLbFNYdExXWUxjT3lPNmZxdzB0SHhJcEUwTzRuNVhpMDRtdG5zY3lsbUVVa0Fmd1Q1b3lQdHBDUCtDZUw4SUdOQmdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMTYxCWZpbGU65oiR5Y675oqi5Liq5bqnLmFwcC50YXIuZ3oKZC9zZ1R4cEtrSHpZUXNKWkFCVXZybkNTNzJ5RWhSbTAzSGdwRitzMG10ZFZBcjhJWGZFYk5XeTVLc0RtbG1ISjVuOWh1d0tDcUYrdGpuWGJ5aldaQmc9PQo=",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-darwin-x64.app.tar.gz"
+    },
+    "darwin-x86_64-app": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWStsdXpEbkc2ZWZIbk5GTTMxNlpLbFNYdExXWUxjT3lPNmZxdzB0SHhJcEUwTzRuNVhpMDRtdG5zY3lsbUVVa0Fmd1Q1b3lQdHBDUCtDZUw4SUdOQmdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMTYxCWZpbGU65oiR5Y675oqi5Liq5bqnLmFwcC50YXIuZ3oKZC9zZ1R4cEtrSHpZUXNKWkFCVXZybkNTNzJ5RWhSbTAzSGdwRitzMG10ZFZBcjhJWGZFYk5XeTVLc0RtbG1ISjVuOWh1d0tDcUYrdGpuWGJ5aldaQmc9PQo=",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-darwin-x64.app.tar.gz"
+    },
+    "linux-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWTZJTnVRZDZReEVsL1lEZFlTUXdFUnBKRy9MNkNBTUlLSzNlYmkyZEE1SzE2TU1UNzNSQ3NlYnBSc2ZMMEpFWW5hOUtYbk5XZVlwRmt3N1lROVdDcEFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMTg1CWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV9hbWQ2NC5BcHBJbWFnZQpWS1Z2U0poeWFiL3BtbG5hbEVPOWwyZU1WMkZDZUNqRHRteTBlbU1tNWpwbkRaMUJscFZnV2w0TDJlc1ordktnc0JMNTg0VjF5ZVFEdTRnbUx3TWJCUT09Cg==",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-linux-amd64.AppImage"
+    },
+    "linux-x86_64-appimage": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWTZJTnVRZDZReEVsL1lEZFlTUXdFUnBKRy9MNkNBTUlLSzNlYmkyZEE1SzE2TU1UNzNSQ3NlYnBSc2ZMMEpFWW5hOUtYbk5XZVlwRmt3N1lROVdDcEFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMTg1CWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV9hbWQ2NC5BcHBJbWFnZQpWS1Z2U0poeWFiL3BtbG5hbEVPOWwyZU1WMkZDZUNqRHRteTBlbU1tNWpwbkRaMUJscFZnV2w0TDJlc1ordktnc0JMNTg0VjF5ZVFEdTRnbUx3TWJCUT09Cg==",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-linux-amd64.AppImage"
+    },
+    "linux-x86_64-deb": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWXo0Z0hWY0RnZjh3Q2ljUlpvMWNkV3N3dlRXMmZqbkJaeDNtdGR3OUVJMUNIYVVqS05pNUhBbGltWGdoN0NwZ1U5VmIyQk83ZDJuTENXNzAxdFV6a2dRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMTg1CWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV9hbWQ2NC5kZWIKaHdpZkhDWnhreFhndlI4bEdVdXhMN0drRjhWTWY4c0Q4OVRHdGV1N016R2E4emlVNUxjNEg2LzFtcEV6MmMvTDRqREFlYXAvaGtrUjYzekNyNWlBQUE9PQo=",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-linux-amd64.deb"
+    },
+    "linux-x86_64-rpm": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWTVycmhxb2RCb0VKRTJ1Ulp5YXFZNklueU9CV2EzK3ZyVUdHd3h0N3hZSGlrcmwxTGF6WFkzTVZJTGdJK28vckFMclV6eHprNmdnQzMreFI3SWdORlFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMTg1CWZpbGU65oiR5Y675oqi5Liq5bqnLTEuMC4yNS0xLng4Nl82NC5ycG0KbENZdjY2WlBoYTluTFpwbENvWVBVTnVKM3o2bW8zMHFPWW55MG43RWNxU1M1WnlEOFFvdHhGQ1JGWWZrYy96M2Rtc0NSNmJSYlVFUFlRV1FtaEZNQVE9PQo=",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-linux-x86_64.rpm"
+    },
+    "windows-i686": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWTh3bXRVSEROWnYvRWpVcWFKOVlYNGgrNmFaeXY0bmxEeno0Q2M2UVBzWkdUSHJSRTF6R0xpb2dRZnBtL2NkdHZ1SjY0OW5aaVdxRnUvTFhtNDZBZHdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMjk3CWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV94ODZfemgtQ04ubXNpCmZsOFBIUHA5VG5HTHBxd21KeFhFMkJucFVTMk5XK2RVUlN5eHdXdE5HU3dIV2NsbWRQL28xdTZhQitGeDE4bWZyNkJJWFUyeXdGVmE3RTlQa29pRkRBPT0K",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-windows-x86.msi"
+    },
+    "windows-i686-msi": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWTh3bXRVSEROWnYvRWpVcWFKOVlYNGgrNmFaeXY0bmxEeno0Q2M2UVBzWkdUSHJSRTF6R0xpb2dRZnBtL2NkdHZ1SjY0OW5aaVdxRnUvTFhtNDZBZHdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMjk3CWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV94ODZfemgtQ04ubXNpCmZsOFBIUHA5VG5HTHBxd21KeFhFMkJucFVTMk5XK2RVUlN5eHdXdE5HU3dIV2NsbWRQL28xdTZhQitGeDE4bWZyNkJJWFUyeXdGVmE3RTlQa29pRkRBPT0K",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-windows-x86.msi"
+    },
+    "windows-i686-nsis": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWS8rSVhlb2kybG1sbldoUERIZHMzc0NsdndYUk9sQVg2dnJYVENXU3crcTR4a05LRVBpZGp5UFpQZXl1Ny9WM1hSWE5hc3NtNjlQaDZsWm9ybEZqU3dNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxMjk3CWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV94ODYtc2V0dXAuZXhlCnliOVdpRmdhSUFOVzB3QXlNRmV3SHZ6RW1rSE1HeExXTkJ2SnpVTEFQdlN0VWdaWmpoenpzUnRNWmRoV3J6WUF1RW5heEZHZGJUNkw1YXQyWFdzc0R3PT0K",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-windows-x86-setup.exe"
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWXdxbHpTd1FCWCtpTi9ETStLQ0RGRHBrUE81VFJVdVZ3UjNlTGN3dG1OckxXd1k4QXA1WXN3K0tHb0hNbE5VeUVtYTF1a3E4am9CNVM0bHhLWHNnWEFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxNTcyCWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV94NjRfemgtQ04ubXNpCmozYzlsNHlRdDhNVUcvbUh3U0lGVFVDMXVzeTBFQWY0R3k0VHIxaXllWDUrU0lmWmVjcGgycUZSeDZqZzJxQzEzY1o1MSszRU1iUktjMVpoc1B2WkFBPT0K",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-windows-x64.msi"
+    },
+    "windows-x86_64-msi": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWXdxbHpTd1FCWCtpTi9ETStLQ0RGRHBrUE81VFJVdVZ3UjNlTGN3dG1OckxXd1k4QXA1WXN3K0tHb0hNbE5VeUVtYTF1a3E4am9CNVM0bHhLWHNnWEFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxNTcyCWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV94NjRfemgtQ04ubXNpCmozYzlsNHlRdDhNVUcvbUh3U0lGVFVDMXVzeTBFQWY0R3k0VHIxaXllWDUrU0lmWmVjcGgycUZSeDZqZzJxQzEzY1o1MSszRU1iUktjMVpoc1B2WkFBPT0K",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-windows-x64.msi"
+    },
+    "windows-x86_64-nsis": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSNkdtV21KRmxjWTJudldaaHc4bzQyRjM2YkJTWGwwY0tnb3RJb3g2YXBMcldlYzJVdlZrTmVHejVzdHJHRDdHcVVNazM2NHhuMkZyUWpVUkZPWXpBY01OMjRVdUQwcHd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY5NjYxNTcyCWZpbGU65oiR5Y675oqi5Liq5bqnXzEuMC4yNV94NjQtc2V0dXAuZXhlCkZNeXdMNlNNcFJpL01abTlzcUdHMFZBeTVZblRwSFFtM0dPY1NhRTh6OVpKRWdEMXo4aTdZU1dRbHk1bFEwZUc1Ui9lelIyZG1aVDV4OEphaGNDbUJBPT0K",
+      "url": "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/igolib_ldu-1.0.25-windows-x64-setup.exe"
+    }
+  }
+}

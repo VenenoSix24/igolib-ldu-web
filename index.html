@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN" class="scroll-smooth">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>我去抢个座 - 智能预约系统</title>
-    
+    <title>我去抢个座</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Fonts: Noto Sans SC -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet" />
+
     <!-- Material Symbols Outlined -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
 
     <script>
         tailwind.config = {
@@ -27,7 +32,7 @@
                         "primary": "#2563eb",
                         "cyan-accent": "#06b6d4",
                         "lavender-accent": "#8b5cf6",
-                        "slate-850": "#1e293b", 
+                        "slate-850": "#1e293b",
                         "slate-950": "#020617",
                     },
                     borderRadius: {
@@ -71,7 +76,8 @@
             font-family: 'Material Symbols Outlined';
             font-weight: normal;
             font-style: normal;
-            font-size: 24px;  /* Default size */
+            font-size: 24px;
+            /* Default size */
             display: inline-block;
             line-height: 1;
             text-transform: none;
@@ -83,12 +89,21 @@
 
         /* Custom Animations */
         @keyframes bobbing {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
+
         .animate-bobbing {
             animation: bobbing 4s ease-in-out infinite;
         }
+
         .animate-bobbing-delayed {
             animation: bobbing 5s ease-in-out infinite;
             animation-delay: 1s;
@@ -103,10 +118,11 @@
             box-shadow: 0 8px 32px 0 rgba(37, 99, 235, 0.05);
             transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         /* Dark Mode overrides for glass-card */
         html.dark .glass-card {
-            background: rgba(30, 41, 59, 0.6); /* slate-800 with opacity */
+            background: rgba(30, 41, 59, 0.6);
+            /* slate-800 with opacity */
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
@@ -115,12 +131,13 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.4",
@@ -133,10 +150,13 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 overflow-x-hidden selection:bg-primary selection:text-white">
+
+<body
+    class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 overflow-x-hidden selection:bg-primary selection:text-white">
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

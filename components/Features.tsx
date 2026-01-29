@@ -24,7 +24,7 @@ export const Features: React.FC = () => {
     {
       icon: 'devices',
       title: '全平台覆盖',
-      description: '完美支持 Android, Windows, macOS 以及 Linux，多端同步，无缝切换。',
+      description: '完美支持 Android, Windows, macOS 以及 Linux，无缝切换。',
       colorClass: 'bg-blue-100 dark:bg-blue-900/40',
       iconColorClass: 'text-primary dark:text-blue-400'
     },
@@ -44,29 +44,29 @@ export const Features: React.FC = () => {
     },
     {
       icon: 'account_tree',
-      title: '多校区自由配置',
-      description: '支持自定义 API 域名、Origin 及 Referer，轻松适配不同校区系统。',
+      title: '多学校自由配置',
+      description: '支持自定义 API 域名、Origin 及 Referer，轻松适配不同学校系统。',
       colorClass: 'bg-yellow-100 dark:bg-yellow-900/40',
       iconColorClass: 'text-yellow-600 dark:text-yellow-400'
     },
     {
       icon: 'calendar_today',
       title: '明日预约模式',
-      description: 'WebSocket 队列仿真，针对次日预约进行毫秒级精准对时起跑。',
+      description: 'WebSocket 队列仿真，针对次日预约进行毫秒级精准对时预约。',
       colorClass: 'bg-emerald-100 dark:bg-emerald-900/40',
       iconColorClass: 'text-emerald-600 dark:text-emerald-400'
     },
     {
       icon: 'electric_bolt',
       title: '即时抢座模式',
-      description: '智能重试策略配合极速响应，实时捡漏与释放抢夺的终极利器。',
+      description: '智能重试策略配合极速响应，实时抢占当天可用座位，学习无忧。',
       colorClass: 'bg-red-100 dark:bg-red-900/40',
       iconColorClass: 'text-red-600 dark:text-red-400'
     },
     {
       icon: 'palette',
       title: '精美 Web UI',
-      description: '基于 TailwindCSS 与动画库构建，体验流畅丝滑的高颜值交互界面。',
+      description: '基于 TailwindCSS 与 Framer 构建，体验流畅丝滑的高颜值交互界面。',
       colorClass: 'bg-indigo-100 dark:bg-indigo-900/40',
       iconColorClass: 'text-indigo-600 dark:text-indigo-400'
     },

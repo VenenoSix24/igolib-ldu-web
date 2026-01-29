@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '../components/Icon';
+import { useGithubRelease } from '../hooks/useGithubRelease';
 
 type OS = 'Windows' | 'macOS' | 'Linux' | 'Android' | 'Unknown';
 
@@ -11,17 +12,15 @@ const DownloadCard: React.FC<{
 }> = ({ active, os, icon, onClick }) => (
   <button
     onClick={onClick}
-    className={`relative group flex flex-col items-center justify-center p-6 rounded-2xl transition-all duration-300 border ${
-      active
-        ? 'bg-white dark:bg-slate-800 border-primary shadow-xl shadow-primary/10 dark:shadow-primary/5 scale-105 z-10'
-        : 'bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 hover:scale-102'
-    }`}
+    className={`relative group flex flex-col items-center justify-center p-6 rounded-2xl transition-all duration-300 border ${active
+      ? 'bg-white dark:bg-slate-800 border-primary shadow-xl shadow-primary/10 dark:shadow-primary/5 scale-105 z-10'
+      : 'bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 hover:scale-102'
+      }`}
   >
-    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${
-      active 
-        ? 'bg-primary/10 text-primary' 
-        : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300'
-    }`}>
+    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${active
+      ? 'bg-primary/10 text-primary'
+      : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300'
+      }`}>
       <Icon name={icon} size="3xl" />
     </div>
     <span className={`font-bold transition-colors ${active ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>{os}</span>
@@ -46,7 +45,7 @@ const CopyBlock: React.FC<{ command: string }> = ({ command }) => {
       <div className="overflow-x-auto pr-10 whitespace-pre-wrap break-all">
         <span className="text-green-400">$</span> {command}
       </div>
-      <button 
+      <button
         onClick={handleCopy}
         className="absolute top-2 right-2 p-2 rounded-md hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
         title="Copy"
@@ -58,6 +57,7 @@ const CopyBlock: React.FC<{ command: string }> = ({ command }) => {
 };
 
 export const Download: React.FC = () => {
+  const { releaseDisplay, downloadLinks, loading } = useGithubRelease();
   const [detectedOS, setDetectedOS] = useState<OS>('Windows');
   const [activeTab, setActiveTab] = useState<OS>('Windows');
   const [show32Bit, setShow32Bit] = useState(false);
@@ -76,10 +76,20 @@ export const Download: React.FC = () => {
     }
   }, []);
 
+  const handleDownload = (url: string) => {
+    if (!url) {
+      // Fallback behavior if URL is missing (e.g. release not ready)
+      alert("该版本暂未发布或正在构建中，请稍后再试，或访问 GitHub Releases 页面\nThis version has not been released yet or is under construction, please try again later, or visit the GitHub Releases page");
+      window.open("https://github.com/VenenoSix24/igolib-ldu/releases", "_blank");
+      return;
+    }
+    window.location.href = url;
+  };
+
   return (
     <div className="pt-32 pb-20 min-h-screen">
       <div className="max-w-6xl mx-auto px-6">
-        
+
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 transition-colors">
@@ -99,8 +109,8 @@ export const Download: React.FC = () => {
               active={activeTab === os}
               icon={
                 os === 'Windows' ? 'window' :
-                os === 'macOS' ? 'laptop_mac' :
-                os === 'Android' ? 'android' : 'terminal'
+                  os === 'macOS' ? 'laptop_mac' :
+                    os === 'Android' ? 'android' : 'terminal'
               }
               onClick={() => setActiveTab(os)}
             />
@@ -117,84 +127,87 @@ export const Download: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-12">
               <div className="space-y-6">
                 <div>
-                  <div className="inline-flex items-center gap-2 text-green-600 bg-green-50 dark:bg-green-900/20 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors">
-                    <Icon name="verified" size="sm" /> 官方推荐
+                  <div className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors">
+                    <Icon name="window" size="sm" /> Windows
                   </div>
                   <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">Windows 客户端</h2>
-                  <p className="text-slate-500 dark:text-slate-400 transition-colors">版本 v2.1.0 • 适用于 Windows 10/11</p>
+                  <p className="text-slate-500 dark:text-slate-400 transition-colors">版本 {loading ? 'Checking...' : releaseDisplay} • 适用于 Windows 10/11</p>
                 </div>
-                
+
                 {/* 64-bit Buttons */}
                 <div className="flex flex-col gap-3">
-                  <button className="bg-primary text-white p-4 rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-blue-600 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+                  <button
+                    onClick={() => handleDownload(downloadLinks.windows.setup_x64)}
+                    className="bg-primary text-white p-4 rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-blue-600 hover:-translate-y-1 transition-all flex items-center justify-center gap-3"
+                  >
                     <Icon name="download" /> 下载 64位安装包 (.exe)
                   </button>
                   <div className="grid grid-cols-2 gap-3">
-                     <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-sm flex items-center justify-center gap-2">
-                       便携版 (Portable)
-                     </button>
-                     <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-sm flex items-center justify-center gap-2">
-                       MSI 安装包
-                     </button>
+                    <button onClick={() => handleDownload(downloadLinks.windows.portable_x64)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-sm flex items-center justify-center gap-2">
+                      便携版 (Portable)
+                    </button>
+                    <button onClick={() => handleDownload(downloadLinks.windows.msi_x64)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-sm flex items-center justify-center gap-2">
+                      MSI 安装包
+                    </button>
                   </div>
                 </div>
 
                 {/* 32-bit Toggle Section */}
                 <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
-                  <button 
+                  <button
                     onClick={() => setShow32Bit(!show32Bit)}
                     className="group flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 font-bold hover:text-primary dark:hover:text-primary transition-colors"
                   >
-                    {show32Bit ? '收起 32位版本' : '显示 32位版本'} 
+                    {show32Bit ? '收起 32位版本' : '显示 32位版本'}
                     <Icon name={show32Bit ? "expand_less" : "expand_more"} size="sm" className="group-hover:translate-y-0.5 transition-transform" />
                   </button>
 
                   {show32Bit && (
-                     <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 animate-fade-in">
-                       <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
-                         32位 exe
-                       </button>
-                       <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
-                         32位 便携版
-                       </button>
-                       <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
-                         32位 MSI
-                       </button>
-                     </div>
+                    <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 animate-fade-in">
+                      <button onClick={() => handleDownload(downloadLinks.windows.setup_x86)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                        32位 exe
+                      </button>
+                      <button onClick={() => handleDownload(downloadLinks.windows.portable_x86)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                        32位 便携版
+                      </button>
+                      <button onClick={() => handleDownload(downloadLinks.windows.msi_x86)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                        32位 MSI
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
 
               {/* Windows Guide */}
               <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 transition-colors">
-                 <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-4 transition-colors">
-                   <Icon name="info" className="text-primary" /> 安装指引
-                 </h3>
-                 <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-                   <details className="group">
-                     <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary dark:hover:text-primary transition-colors">
-                       <span>提示 "Windows 已保护您的电脑"？</span>
-                       <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
-                     </summary>
-                     <div className="pt-3 pb-1 pl-4 border-l-2 border-slate-200 dark:border-slate-700 ml-1 mt-2 space-y-2">
-                       <p>这是因为应用暂未购买昂贵的 EV 证书。请按以下步骤操作：</p>
-                       <ol className="list-decimal list-inside space-y-1 text-slate-500 dark:text-slate-500">
-                         <li>点击弹窗中的 <span className="font-bold text-slate-800 dark:text-slate-300">"更多信息"</span></li>
-                         <li>点击下方的 <span className="font-bold text-slate-800 dark:text-slate-300">"仍要运行"</span> 按钮</li>
-                       </ol>
-                     </div>
-                   </details>
-                   
-                   <details className="group">
-                     <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary dark:hover:text-primary transition-colors">
-                       <span>Windows 7 用户必读</span>
-                       <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
-                     </summary>
-                     <div className="pt-3 pb-1 text-slate-500 dark:text-slate-500">
-                       由于 Tauri 2.0 依赖较新的 WebView2 运行时，Win7 用户可能需要手动安装 WebView2 Runtime 或升级系统。建议使用 Windows 10 及以上版本。
-                     </div>
-                   </details>
-                 </div>
+                <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-4 transition-colors">
+                  <Icon name="info" className="text-primary" /> 安装指引
+                </h3>
+                <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                  <details className="group">
+                    <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary dark:hover:text-primary transition-colors">
+                      <span>提示 "Windows 已保护您的电脑"？</span>
+                      <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="pt-3 pb-1 pl-4 border-l-2 border-slate-200 dark:border-slate-700 ml-1 mt-2 space-y-2">
+                      <p>这是因为应用暂未购买昂贵的 EV 证书。请按以下步骤操作：</p>
+                      <ol className="list-decimal list-inside space-y-1 text-slate-500 dark:text-slate-500">
+                        <li>点击弹窗中的 <span className="font-bold text-slate-800 dark:text-slate-300">"更多信息"</span></li>
+                        <li>点击下方的 <span className="font-bold text-slate-800 dark:text-slate-300">"仍要运行"</span> 按钮</li>
+                      </ol>
+                    </div>
+                  </details>
+
+                  <details className="group">
+                    <summary className="flex items-center justify-between cursor-pointer list-none font-medium hover:text-primary dark:hover:text-primary transition-colors">
+                      <span>Windows 7 用户必读</span>
+                      <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="pt-3 pb-1 text-slate-500 dark:text-slate-500">
+                      由于 Tauri 2.0 依赖较新的 WebView2 运行时，Win7 用户可能需要手动安装 WebView2 Runtime 或升级系统。建议使用 Windows 10 及以上版本。
+                    </div>
+                  </details>
+                </div>
               </div>
             </div>
           )}
@@ -202,69 +215,72 @@ export const Download: React.FC = () => {
           {/* macOS View */}
           {activeTab === 'macOS' && (
             <div className="grid md:grid-cols-2 gap-12">
-               <div className="space-y-6">
+              <div className="space-y-6">
                 <div>
-                   <div className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors">
+                  <div className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs font-bold mb-4 transition-colors">
                     <Icon name="laptop_mac" size="sm" /> macOS
                   </div>
                   <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">macOS 客户端</h2>
-                  <p className="text-slate-500 dark:text-slate-400 transition-colors">支持 macOS 11.0 (Big Sur) 及以上版本</p>
+                  <p className="text-slate-500 dark:text-slate-400 transition-colors">版本 {loading ? 'Checking...' : releaseDisplay} • 支持 macOS 11.0 (Big Sur) 及以上版本</p>
                 </div>
-                
+
                 <div className="flex flex-col gap-3">
-                  <button className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-4 rounded-xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 dark:hover:bg-slate-200 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+                  <button onClick={() => handleDownload(downloadLinks.mac.arm_dmg)} className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-4 rounded-xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 dark:hover:bg-slate-200 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
                     <Icon name="download" /> Apple Silicon (M1/M2/M3)
                   </button>
-                  <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-3">
+                  <button onClick={() => handleDownload(downloadLinks.mac.intel_dmg)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-3">
                     <Icon name="download" /> Intel 芯片版本
                   </button>
                 </div>
               </div>
 
-               {/* macOS Guide */}
+              {/* macOS Guide */}
               <div className="animate-fade-in space-y-8 h-full">
                 <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 transition-colors">
-                   <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-4 transition-colors">
-                     <Icon name="terminal" className="text-slate-700 dark:text-slate-400" /> 终端修复指引
-                   </h3>
-                   <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-                     <p>如果打开应用时提示 <span className="font-bold text-red-500">"已损坏"</span> 或 <span className="font-bold text-red-500">"无法验证开发者"</span>，请在终端中执行以下命令来移除隔离属性：</p>
-                     
-                     <div>
-                       <p className="text-xs font-bold text-slate-400 mb-1">针对已安装的应用:</p>
-                       <CopyBlock command="xattr -rd com.apple.quarantine /Applications/我去抢个座.app" />
-                     </div>
-  
-                     <div>
-                       <p className="text-xs font-bold text-slate-400 mb-1">针对下载的 DMG 文件:</p>
-                       <CopyBlock command="xattr -rd com.apple.quarantine ~/Downloads/我去抢个座_*.dmg" />
-                     </div>
-                   </div>
+                  <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-4 transition-colors">
+                    <Icon name="terminal" className="text-slate-700 dark:text-slate-400" /> 终端修复指引
+                  </h3>
+                  <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                    <p>如果打开应用时提示 <span className="font-bold text-red-500">"已损坏"</span> 或 <span className="font-bold text-red-500">"无法验证开发者"</span>，请在终端中执行以下命令来移除隔离属性：</p>
+
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 mb-1">针对已安装的应用:</p>
+                      <CopyBlock command="xattr -rd com.apple.quarantine /Applications/我去抢个座.app" />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-bold text-slate-400 mb-1">针对下载的 DMG 文件:</p>
+                      <CopyBlock command="xattr -rd com.apple.quarantine ~/Downloads/我去抢个座_*.dmg" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
-           {/* Linux View */}
-           {activeTab === 'Linux' && (
+          {/* Linux View */}
+          {activeTab === 'Linux' && (
             <div className="text-center py-10">
               <div className="inline-flex p-4 bg-slate-100 dark:bg-slate-700 rounded-full mb-6 text-slate-700 dark:text-slate-200 transition-colors">
                 <Icon name="terminal" size="4xl" />
               </div>
               <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 transition-colors">Linux 客户端</h2>
+              <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto mb-2 transition-colors font-medium">
+                版本 {loading ? 'Checking...' : releaseDisplay}
+              </p>
               <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto mb-8 transition-colors">
-                既然你使用 Linux，相信你已经知道如何安装了。我们提供了主流的打包格式。
+                都用 Linux了，相信你也知道如何安装。我们提供了主流的打包格式。
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                 <button className="bg-slate-800 dark:bg-slate-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-700 dark:hover:bg-slate-600 transition-colors flex items-center gap-2">
-                   .deb (Debian/Ubuntu)
-                 </button>
-                 <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
-                   .rpm (Fedora/RHEL)
-                 </button>
-                 <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
-                   .AppImage (Universal)
-                 </button>
+                <button onClick={() => handleDownload(downloadLinks.linux.deb)} className="bg-slate-800 dark:bg-slate-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-700 dark:hover:bg-slate-600 transition-colors flex items-center gap-2">
+                  .deb (Debian/Ubuntu)
+                </button>
+                <button onClick={() => handleDownload(downloadLinks.linux.rpm)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+                  .rpm (Fedora/RHEL)
+                </button>
+                <button onClick={() => handleDownload(downloadLinks.linux.appImage)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+                  .AppImage (Universal)
+                </button>
               </div>
             </div>
           )}
@@ -272,27 +288,36 @@ export const Download: React.FC = () => {
           {/* Android View */}
           {activeTab === 'Android' && (
             <div className="max-w-xl mx-auto space-y-8 animate-fade-in text-center">
-                <div>
-                  <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">Android 客户端</h2>
-                  <p className="text-slate-500 dark:text-slate-400 transition-colors">随时随地，极速抢座。支持 Android 8.0+</p>
-                </div>
-                
-                <div className="flex flex-col gap-3">
-                  <button className="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg shadow-green-600/20 hover:bg-green-500 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
-                      <Icon name="download" /> 下载 arm64-v8a APK
-                      <span className="bg-white/20 text-xs px-2 py-0.5 rounded ml-2">推荐</span>
-                  </button>
-                  <button className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
-                     <Icon name="download" size="sm" /> 下载 arm-v7a (旧设备)
-                  </button>
-                   <button className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
-                     <Icon name="download" size="sm" /> 下载 x86_64 (模拟器)
-                  </button>
-                </div>
-                
-                <p className="text-xs text-slate-400">
-                   请根据您的手机架构选择版本。绝大多数现代手机请选择推荐的 arm64-v8a 版本。
-                </p>
+              <div>
+                <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 transition-colors">Android 客户端</h2>
+                <p className="text-slate-500 dark:text-slate-400 transition-colors">版本 {loading ? 'Checking...' : releaseDisplay} • 随时随地，极速抢座。支持 Android 8.0+</p>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={() => handleDownload(downloadLinks.android.arm64_apk)}
+                  className="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg shadow-green-600/20 hover:bg-green-500 hover:-translate-y-1 transition-all grid grid-cols-[1fr_auto_1fr] items-center px-6"
+                >
+                  <div /> {/* Left balanced spacer */}
+                  <div className="flex items-center gap-2">
+                    <Icon name="download" />
+                    <span>下载 arm64-v8a APK</span>
+                  </div>
+                  <div className="flex justify-start pl-2">
+                    <span className="bg-white/20 text-[10px] px-2 py-0.5 rounded font-black uppercase tracking-wider">推荐</span>
+                  </div>
+                </button>
+                <button onClick={() => handleDownload(downloadLinks.android.armv7_apk)} className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 transition-all flex items-center justify-center gap-2">
+                  <Icon name="download" /> 下载 arm-v7a (旧设备)
+                </button>
+                <button onClick={() => handleDownload(downloadLinks.android.x86_apk)} className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 transition-all flex items-center justify-center gap-2">
+                  <Icon name="download" /> 下载 x86_64 (模拟器)
+                </button>
+              </div>
+
+              <p className="text-xs text-slate-400">
+                请根据您的手机架构选择版本。绝大多数现代手机请选择推荐的 arm64-v8a 版本。
+              </p>
             </div>
           )}
 
