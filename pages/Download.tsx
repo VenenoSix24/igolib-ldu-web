@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '../components/Icon';
-import QRCode from 'react-qr-code';
 
 type OS = 'Windows' | 'macOS' | 'Linux' | 'Android' | 'Unknown';
-
-const ANDROID_APK_URL = "https://github.com/VenenoSix24/igolib-ldu/releases/latest/download/app-arm64-v8a-release.apk";
 
 const DownloadCard: React.FC<{
   active: boolean;
@@ -293,13 +290,6 @@ export const Download: React.FC = () => {
                   </button>
                 </div>
                 
-                <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
-                  <div className="bg-white p-4 rounded-2xl shadow-sm inline-block mx-auto">
-                     <QRCode value={ANDROID_APK_URL} size={140} />
-                  </div>
-                  <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mt-4">扫描二维码直接下载 APK</p>
-                </div>
-
                 <p className="text-xs text-slate-400">
                    请根据您的手机架构选择版本。绝大多数现代手机请选择推荐的 arm64-v8a 版本。
                 </p>
