@@ -56,6 +56,7 @@ const CopyBlock: React.FC<{ command: string }> = ({ command }) => {
 export const Download: React.FC = () => {
   const [detectedOS, setDetectedOS] = useState<OS>('Windows');
   const [activeTab, setActiveTab] = useState<OS>('Windows');
+  const [show32Bit, setShow32Bit] = useState(false);
 
   useEffect(() => {
     const userAgent = navigator.userAgent;
@@ -119,6 +120,7 @@ export const Download: React.FC = () => {
                   <p className="text-slate-500">版本 v2.1.0 • 适用于 Windows 10/11</p>
                 </div>
                 
+                {/* 64-bit Buttons */}
                 <div className="flex flex-col gap-3">
                   <button className="bg-primary text-white p-4 rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-blue-600 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
                     <Icon name="download" /> 下载 64位安装包 (.exe)
@@ -133,11 +135,29 @@ export const Download: React.FC = () => {
                   </div>
                 </div>
 
+                {/* 32-bit Toggle Section */}
                 <div className="pt-4 border-t border-slate-100">
-                  <p className="text-xs text-slate-400 font-bold uppercase mb-3">更多选项</p>
-                  <a href="#" className="text-sm text-slate-500 hover:text-primary flex items-center gap-1">
-                    下载 32位版本 <Icon name="open_in_new" size="sm" />
-                  </a>
+                  <button 
+                    onClick={() => setShow32Bit(!show32Bit)}
+                    className="group flex items-center gap-2 text-sm text-slate-500 font-bold hover:text-primary transition-colors"
+                  >
+                    {show32Bit ? '收起 32位版本' : '显示 32位版本'} 
+                    <Icon name={show32Bit ? "expand_less" : "expand_more"} size="sm" className="group-hover:translate-y-0.5 transition-transform" />
+                  </button>
+
+                  {show32Bit && (
+                     <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 animate-fade-in">
+                       <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                         32位 exe
+                       </button>
+                       <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                         32位 便携版
+                       </button>
+                       <button className="bg-white border border-slate-200 text-slate-600 p-2 rounded-lg hover:text-primary hover:border-primary/50 transition-colors text-xs font-bold">
+                         32位 MSI
+                       </button>
+                     </div>
+                  )}
                 </div>
               </div>
 
@@ -245,35 +265,28 @@ export const Download: React.FC = () => {
 
           {/* Android View */}
           {activeTab === 'Android' && (
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
+            <div className="max-w-xl mx-auto space-y-8 animate-fade-in text-center">
                 <div>
                   <h2 className="text-3xl font-black text-slate-900 mb-2">Android 客户端</h2>
                   <p className="text-slate-500">随时随地，极速抢座。支持 Android 8.0+</p>
                 </div>
                 
-                <button className="bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg shadow-green-600/20 hover:bg-green-500 hover:-translate-y-1 transition-all flex items-center justify-center gap-3 w-full md:w-auto">
-                    <Icon name="android" /> 下载 APK (arm64-v8a)
-                    <span className="bg-white/20 text-xs px-2 py-0.5 rounded ml-2">推荐</span>
-                </button>
-                
-                <div className="flex gap-3">
-                   <button className="flex-1 bg-white border border-slate-200 text-slate-600 p-2 rounded-lg font-bold hover:bg-slate-50 text-xs">
-                     arm-v7a
-                   </button>
-                   <button className="flex-1 bg-white border border-slate-200 text-slate-600 p-2 rounded-lg font-bold hover:bg-slate-50 text-xs">
-                     x86_64
-                   </button>
+                <div className="flex flex-col gap-3">
+                  <button className="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg shadow-green-600/20 hover:bg-green-500 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+                      <Icon name="download" /> 下载 arm64-v8a APK
+                      <span className="bg-white/20 text-xs px-2 py-0.5 rounded ml-2">推荐</span>
+                  </button>
+                  <button className="w-full bg-white border border-slate-200 text-slate-600 p-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
+                     <Icon name="download" size="sm" /> 下载 arm-v7a (旧设备)
+                  </button>
+                   <button className="w-full bg-white border border-slate-200 text-slate-600 p-4 rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-3">
+                     <Icon name="download" size="sm" /> 下载 x86_64 (模拟器)
+                  </button>
                 </div>
-              </div>
-              <div className="bg-slate-100 rounded-2xl p-8 flex items-center justify-center">
-                 <div className="text-center space-y-4">
-                    <div className="w-32 h-32 bg-white rounded-xl mx-auto flex items-center justify-center shadow-sm">
-                      <Icon name="qr_code_2" size="6xl" className="text-slate-800" />
-                    </div>
-                    <p className="text-sm font-bold text-slate-500">扫码直接下载</p>
-                 </div>
-              </div>
+                
+                <p className="text-xs text-slate-400">
+                   请根据您的手机架构选择版本。绝大多数现代手机请选择推荐的 arm64-v8a 版本。
+                </p>
             </div>
           )}
 
