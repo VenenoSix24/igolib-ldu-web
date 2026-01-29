@@ -8,29 +8,27 @@ import { Download } from './pages/Download';
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState(false);
 
-  // Initialize theme from localStorage or system preference
+  // Initialize theme from system preference and listen for changes
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const updateTheme = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) {
+        setIsDark(true);
+        document.documentElement.classList.add('dark');
+      } else {
+        setIsDark(false);
+        document.documentElement.classList.remove('dark');
+      }
+    };
 
-  const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      setIsDark(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      setIsDark(true);
-    }
-  };
+    // Initial check
+    updateTheme(mediaQuery);
+
+    // Listen for changes
+    mediaQuery.addEventListener('change', updateTheme);
+    return () => mediaQuery.removeEventListener('change', updateTheme);
+  }, []);
 
   return (
     <BrowserRouter>
@@ -44,7 +42,7 @@ const App: React.FC = () => {
           <div className={`absolute inset-0 bg-gradient-to-b transition-colors duration-500 ${isDark ? 'from-slate-950/80 to-slate-950' : 'from-white/40 to-transparent'}`}></div>
         </div>
 
-        <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+        <Navbar />
         
         <main className="flex-grow">
           <Routes>

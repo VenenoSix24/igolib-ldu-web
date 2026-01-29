@@ -4,8 +4,8 @@ import { Icon } from './Icon';
 export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-lavender-accent/10 to-cyan-accent/10 rounded-full blur-[100px] -z-10 animate-pulse dark:opacity-20"></div>
+      {/* Background Gradient - Removed animate-pulse to fix button flickering */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-lavender-accent/10 to-cyan-accent/10 rounded-full blur-[100px] -z-10 dark:opacity-20"></div>
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
@@ -34,22 +34,6 @@ export const Hero: React.FC = () => {
             <button className="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-2 border-slate-200 dark:border-slate-700 px-10 py-5 rounded-thick font-bold text-lg hover:bg-white dark:hover:bg-slate-700 hover:border-primary text-slate-700 dark:text-slate-200 hover:text-primary transition-all flex items-center justify-center gap-2">
               GitHub <Icon name="code" />
             </button>
-          </div>
-
-          {/* Social Proof Stats */}
-          <div className="pt-8 flex items-center justify-center lg:justify-start gap-8 border-t border-slate-200/50 dark:border-slate-700/50">
-             <div>
-               <div className="text-2xl font-black text-slate-900 dark:text-white">10k+</div>
-               <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Users</div>
-             </div>
-             <div>
-               <div className="text-2xl font-black text-slate-900 dark:text-white">99.8%</div>
-               <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Success Rate</div>
-             </div>
-             <div>
-               <div className="text-2xl font-black text-slate-900 dark:text-white">GitHub</div>
-               <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Open Source</div>
-             </div>
           </div>
         </div>
 

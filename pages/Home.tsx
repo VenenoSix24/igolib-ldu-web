@@ -33,7 +33,7 @@ export const Home: React.FC = () => {
       <FAQ />
       
       {/* Call to Action for Download at bottom of Home */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
+      <section id="download-cta" className="py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6 transition-colors">准备好开始了吗？</h2>
           <p className="text-slate-500 dark:text-slate-400 mb-8 transition-colors">立即下载全平台客户端，体验极速抢座的快感。</p>
