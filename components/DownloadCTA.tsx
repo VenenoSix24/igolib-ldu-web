@@ -35,7 +35,7 @@ export const DownloadCTA: React.FC = () => {
                   <span className="text-xs font-bold text-slate-400 uppercase">Windows</span>
                 </div>
                 <div className="flex flex-col items-center gap-3 group w-20 md:w-auto">
-                  <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white shadow-sm group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-purple-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 shadow-sm group-hover:scale-110 transition-transform duration-300">
                     <Icon name="laptop_mac" size="3xl" />
                   </div>
                   <span className="text-xs font-bold text-slate-400 uppercase">macOS</span>

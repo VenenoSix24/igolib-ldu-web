@@ -59,9 +59,9 @@ export const Process: React.FC = () => {
 
           {/* Step 4 */}
           <div className="relative group">
-            <div className="glass-card p-8 rounded-thick relative z-10 hover:border-primary/30 transition-colors bg-gradient-to-br from-primary/5 to-transparent h-full">
+            <div className="glass-card p-8 rounded-thick relative z-10 hover:border-primary/30 transition-colors h-full">
               <div className="text-5xl font-black text-primary/10 dark:text-primary/20 absolute top-4 right-6 pointer-events-none">04</div>
-              <div className="w-12 h-12 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm flex items-center justify-center mb-6 text-primary transition-colors">
                 <Icon name="play_arrow" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">启动任务</h3>
