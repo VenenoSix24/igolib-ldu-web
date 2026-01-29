@@ -223,10 +223,6 @@ export const Download: React.FC = () => {
 
                {/* macOS Guide */}
               <div className="animate-fade-in space-y-8 h-full">
-                {/* Purple Icon Added Here */}
-                <div className="bg-purple-50 p-6 rounded-2xl text-purple-600 shrink-0 h-fit hidden md:block w-fit">
-                   <Icon name="laptop_mac" size="5xl" />
-                </div>
                 <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 transition-colors">
                    <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2 mb-4 transition-colors">
                      <Icon name="terminal" className="text-slate-700 dark:text-slate-400" /> 终端修复指引

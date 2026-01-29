@@ -84,13 +84,13 @@ export const Navbar: React.FC = () => {
               <Icon name={isMenuOpen ? "close" : "menu"} size="md" />
             </button>
 
-            <button 
-              onClick={() => scrollToSection('download-cta')}
+            <Link 
+              to="/download"
               className="bg-primary text-white px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm shadow-xl shadow-primary/30 hover:bg-blue-600 transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap"
             >
               <span className="hidden sm:inline">立即</span>下载
               <Icon name="download" size="sm" className="sm:hidden" />
-            </button>
+            </Link>
           </div>
         </div>
       </nav>
