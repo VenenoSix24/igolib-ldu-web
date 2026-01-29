@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
               <li><a href="#process" className="hover:text-primary transition-colors flex items-center gap-2">使用流程</a></li>
               <li><a href="#faq" className="hover:text-primary transition-colors flex items-center gap-2">常见问题</a></li>
               <li><Link to="/changelog" className="hover:text-primary transition-colors flex items-center gap-2">更新日志</Link></li>
-              <li><Link to="/download" className="hover:text-primary transition-colors flex items-center gap-2">下载客户端</Link></li>
+              <li><Link to="/#download-cta" className="hover:text-primary transition-colors flex items-center gap-2">下载客户端</Link></li>
             </ul>
           </div>
           
