@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { Download } from './pages/Download';
+import { Changelog } from './pages/Changelog';
 
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState(false);
@@ -48,6 +49,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/download" element={<Download />} />
+            <Route path="/changelog" element={<Changelog />} />
           </Routes>
         </main>
         

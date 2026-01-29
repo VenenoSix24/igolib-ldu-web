@@ -44,12 +44,13 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Center: Nav Links */}
-        <div className="hidden md:flex flex-none items-center gap-8 lg:gap-10 justify-center">
+        <div className="hidden md:flex flex-none items-center gap-6 lg:gap-8 justify-center">
           <button onClick={scrollToTop} className={linkClass}>首页</button>
           
           <button onClick={() => scrollToSection('features')} className={linkClass}>功能特性</button>
           <button onClick={() => scrollToSection('process')} className={linkClass}>使用流程</button>
           <button onClick={() => scrollToSection('faq')} className={linkClass}>常见问题</button>
+          <Link to="/changelog" className={linkClass}>更新日志</Link>
           
           <button onClick={() => scrollToSection('download-cta')} className={linkClass}>
             下载体验

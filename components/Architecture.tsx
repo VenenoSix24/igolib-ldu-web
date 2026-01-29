@@ -3,10 +3,12 @@ import { Icon } from './Icon';
 
 export const Architecture: React.FC = () => {
   return (
-    <section className="py-32 bg-slate-50 dark:bg-slate-950 relative overflow-hidden transition-colors">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <section className="py-32 relative overflow-hidden">
+      {/* Removed solid background colors to fix visual disconnection */}
+      
+      {/* Background Decor - Kept subtle blurs */}
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
@@ -33,7 +35,7 @@ export const Architecture: React.FC = () => {
           </p>
           
           <div className="space-y-4 pt-4">
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/60 dark:bg-slate-800/40 backdrop-blur-sm border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
               <div className="bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 p-3 rounded-xl shrink-0">
                 <Icon name="layers" />
               </div>
@@ -43,7 +45,7 @@ export const Architecture: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/60 dark:bg-slate-800/40 backdrop-blur-sm border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
               <div className="bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 p-3 rounded-xl shrink-0">
                 <Icon name="code" />
               </div>
