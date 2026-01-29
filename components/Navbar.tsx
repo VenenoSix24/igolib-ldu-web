@@ -58,7 +58,7 @@ export const Navbar: React.FC = () => {
           <div className="flex-1 flex justify-start items-center">
             <button onClick={scrollToTop} className="flex items-center gap-3 group">
               <div className="flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                <img src="/assets/android-chrome-192x192.png" alt="Logo" className="w-9 h-9 object-contain" />
+                <img src={`${import.meta.env.BASE_URL}assets/android-chrome-192x192.png`} alt="Logo" className="w-9 h-9 object-contain" />
               </div>
               <h2 className="text-lg md:text-xl font-black tracking-tight text-slate-800 dark:text-white">我去抢个座</h2>
             </button>

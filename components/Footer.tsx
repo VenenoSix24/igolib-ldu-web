@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
-              <img src="/assets/android-chrome-192x192.png" alt="Logo" className="w-9 h-9 object-contain" />
+              <img src={`${import.meta.env.BASE_URL}assets/android-chrome-192x192.png`} alt="Logo" className="w-9 h-9 object-contain" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white transition-colors">我去抢个座</h2>
             </div>
             <p className="text-slate-500 dark:text-slate-400 max-w-sm font-medium leading-relaxed text-sm transition-colors">

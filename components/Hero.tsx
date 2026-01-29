@@ -59,14 +59,14 @@ export const Hero: React.FC = () => {
           <div className="relative z-20 w-full max-w-[800px] aspect-[16/9.92] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300">
             {/* Light Mode Screenshot */}
             <img
-              src="/assets/Application-Interface-Light.png"
+              src={`${import.meta.env.BASE_URL}assets/Application-Interface-Light.png`}
               alt="Application Interface Light"
               className="w-full h-full object-cover block dark:hidden"
             />
 
             {/* Dark Mode Screenshot */}
             <img
-              src="/assets/Application-Interface-Dark.png"
+              src={`${import.meta.env.BASE_URL}assets/Application-Interface-Dark.png`}
               alt="Application Interface Dark"
               className="w-full h-full object-cover hidden dark:block"
             />
