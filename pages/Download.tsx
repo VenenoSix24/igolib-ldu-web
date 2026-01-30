@@ -269,7 +269,7 @@ export const Download: React.FC = () => {
                 版本 {loading ? 'Checking...' : releaseDisplay}
               </p>
               <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto mb-8 transition-colors">
-                都用 Linux了，相信你也知道如何安装。我们提供了主流的打包格式。
+                都用 Linux 了，相信你也知道如何安装。我们提供了主流的打包格式。
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <button onClick={() => handleDownload(downloadLinks.linux.deb)} className="bg-slate-800 dark:bg-slate-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-700 dark:hover:bg-slate-600 transition-colors flex items-center gap-2">
