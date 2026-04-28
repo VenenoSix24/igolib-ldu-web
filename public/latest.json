@@ -1,6 +1,6 @@
 {
   "version": "1.0.26",
-  "notes": "🎉我去抢个座v1.0.26发布！\n新增微信扫码获取Cookie\n修复官版选座异常\n正式全面支持官版！",
+  "notes": "🎉 我去抢个座v1.0.26发布 🎉\n - 新增微信扫码获取 Cookie\n - 修复官版选座异常\n - 正式全面支持官版\n⚠️ 若更新失败，请手动前往官网（https://igolib.ivyris.top/）下载最新版本",
   "pub_date": "2026-04-28T04:23:41.399Z",
   "platforms": {
     "darwin-aarch64": {
