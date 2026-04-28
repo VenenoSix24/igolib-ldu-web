@@ -29,9 +29,9 @@ export const Features: React.FC = () => {
       iconColorClass: 'text-primary dark:text-blue-400'
     },
     {
-      icon: 'memory',
-      title: '纯单机驱动',
-      description: '采用异步并发逻辑，本地与服务器直接通信，无云端延迟中转。',
+      icon: 'qr_code',
+      title: '扫码获取 Cookie',
+      description: '采用微信扫码获取 Cookie，告别繁琐抓包操作，更加方便快捷。',
       colorClass: 'bg-cyan-100 dark:bg-cyan-900/40',
       iconColorClass: 'text-cyan-600 dark:text-cyan-400'
     },

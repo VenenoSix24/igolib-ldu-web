@@ -99,7 +99,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs font-bold transition-colors">
           <p>© 2026 我去抢个座 • All Rights Reserved</p>
           <div className="flex gap-6">
-            <span>App Version: 1.0.25</span>
+            <span>App Version: 1.0.26</span>
             <span>Core Logic: 4.6.25 TS</span>
             <a href="#" className="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">隐私权政策</a>
             <a href="#" className="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">服务条款</a>

@@ -41,15 +41,15 @@ export const FAQ: React.FC = () => {
     },
     {
       question: "为什么 Windows 提示“已保护您的电脑”？",
-      answer: "这是因为我们是开源免费项目，没有购买 EV 代码签名证书。请点击弹窗中的「更多信息」然后选择「仍要运行」即可。代码完全开源，安全可查。"
+      answer: "这是因为我们是开源免费项目，没有购买代码签名证书。请点击弹窗中的「更多信息」然后选择「仍要运行」即可。代码完全开源，安全可查。"
     },
     {
       question: "支持哪些学校的图书馆系统？",
-      answer: "目前完美支持使用“某个X去图书馆”的大多数高校图书馆。如果您的学校系统 API 结构与标准版一致，只需在设置中更改 API 域名即可直接使用。我们也正在适配更多系统。"
+      answer: "目前完美支持使用“某个X去图书馆”的大多数高校图书馆。如果您的学校系统 API 结构与标准版一致，只需在设置中更改 API 域名即可直接使用。我们也正在适配更多学校，如需适配，还请提供数据支持。"
     },
     {
       question: "如何获取我的 Cookie？",
-      answer: "使用 Charles、Reqable 等网络抓包工具，开启后，正常访问一次图书馆系统，然后找到登录 Cookie （大概像：Authorization=eyJ0xxxxxx），后面我会写一篇教程。"
+      answer: "现已支持微信扫码获取 Cookie，无需繁琐抓包，具体操作见软件内提示。"
     },
     {
       question: "软件是收费的吗？",
@@ -78,7 +78,7 @@ export const FAQ: React.FC = () => {
 
         <div className="mt-12 text-center">
           <p className="text-slate-500 dark:text-slate-400">
-            还有其他问题？<br></br>欢迎加入我们的 <a href="https://t.me/igolib_ldu" className="text-primary font-bold hover:underline">Telegram 交流群</a> 或提交 <a href="https://github.com/VenenoSix24/igolib-ldu/issues" className="text-primary font-bold hover:underline">GitHub Issue</a>
+            还有其他问题？<br></br>欢迎加入我们的 <a href="https://t.me/igolib_ldu" className="text-primary font-bold hover:underline">Telegram 交流群</a>、提交 <a href="https://github.com/VenenoSix24/igolib-ldu/issues" className="text-primary font-bold hover:underline">GitHub Issue</a> 或发送邮件至 <a href="mailto:lagbqy@gmail.com" className="text-primary font-bold hover:underline">Email</a>
           </p>
         </div>
       </div>

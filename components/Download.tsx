@@ -169,7 +169,7 @@ export const Download: React.FC = () => {
                          <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
                        </summary>
                        <div className="pt-3 pb-1 pl-4 border-l-2 border-slate-200 ml-1 mt-2 space-y-2">
-                         <p>这是因为应用暂未购买昂贵的 EV 证书。请按以下步骤操作：</p>
+                         <p>这是因为应用暂未购买代码签名证书。请按以下步骤操作：</p>
                          <ol className="list-decimal list-inside space-y-1 text-slate-500">
                            <li>点击弹窗中的 <span className="font-bold text-slate-800">"更多信息"</span></li>
                            <li>点击下方的 <span className="font-bold text-slate-800">"仍要运行"</span> 按钮</li>

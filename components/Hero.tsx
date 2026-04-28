@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
         <div className="relative z-10 space-y-8 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-primary/20 text-primary px-5 py-2 rounded-full shadow-sm mx-auto lg:mx-0 transition-colors">
             <Icon name="verified" className="text-sm md:text-base font-bold" />
-            <span className="text-xs font-black tracking-widest uppercase">新版发布: 全平台应用上线！</span>
+            <span className="text-xs font-black tracking-widest uppercase">新版发布: 扫码获取 Cookie & 官版支持！</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter text-slate-900 dark:text-white transition-colors">

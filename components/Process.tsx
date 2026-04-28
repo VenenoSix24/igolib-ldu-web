@@ -39,7 +39,7 @@ export const Process: React.FC = () => {
                 <Icon name="key" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">凭证加载</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-sm">直接粘贴用户 Cookie，系统将自动进行有效性校验。</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">微信扫码一键获取用户 Cookie，系统将自动进行有效性校验。</p>
             </div>
             <Arrow />
           </div>

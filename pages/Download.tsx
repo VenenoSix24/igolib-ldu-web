@@ -204,7 +204,7 @@ export const Download: React.FC = () => {
                       <Icon name="expand_more" className="transition-transform group-open:rotate-180" />
                     </summary>
                     <div className="pt-3 pb-1 text-slate-500 dark:text-slate-500">
-                      由于 Tauri 2.0 依赖较新的 WebView2 运行时，Win7 用户可能需要手动安装 WebView2 Runtime 或升级系统。建议使用 Windows 10 及以上版本。
+                      由于 Tauri 2.0 依赖较新的 WebView2 运行时，Win7 用户可能需要手动安装 WebView2 Runtime 或升级系统。当然也可以联系我协助❤️。
                     </div>
                   </details>
                 </div>
@@ -226,7 +226,7 @@ export const Download: React.FC = () => {
 
                 <div className="flex flex-col gap-3">
                   <button onClick={() => handleDownload(downloadLinks.mac.arm_dmg)} className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-4 rounded-xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 dark:hover:bg-slate-200 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
-                    <Icon name="download" /> Apple Silicon (M1/M2/M3)
+                    <Icon name="download" /> Apple Silicon (M1/M2/M3等)
                   </button>
                   <button onClick={() => handleDownload(downloadLinks.mac.intel_dmg)} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 p-4 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-3">
                     <Icon name="download" /> Intel 芯片版本
